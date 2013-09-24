@@ -1,0 +1,6 @@
+.project
+.buildpath
+.settings
+phpdo*
+vendor
+composer.lock

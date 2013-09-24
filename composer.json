@@ -1,0 +1,22 @@
+{
+	"name": "ginger/ginger",
+	"descript": "A very easy to use RESTful framework",
+	"authors": [
+		{
+			"name": "Big Ginger Nerd",
+			"email": "bgn@vanmaasakkers.net",
+			"homepage": "https://twitter.com/biggingernerd",
+			"role": "Developer"
+		}
+	],
+	"keywords": ["rest", "api", "webservice", "ginger"],
+    "require": {
+    	"php": ">=5.3.0",
+		"vlucas/valitron": "1.1.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "Ginger": "src"
+        }
+    }
+}

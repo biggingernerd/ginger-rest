@@ -111,7 +111,7 @@ class Mongo {
 			
 			unset($find['id']);	
 		}
-		
+
 		$cursor = $this->getCollection()->find($find)->limit($this->getLimit())->skip($this->getOffset());
 		$this->setTotal($cursor->count());
 		return $cursor;
@@ -142,7 +142,7 @@ class Mongo {
 	 */
 	public function update($find = array(), $data) 
 	{
-		$this->getCollection()->update($find, array('$set' => $this->_getSafeVars($data)), array("multiple" => true));	
+		return $this->getCollection()->update($find, array('$set' => $this->_getSafeVars($data)), array("multiple" => true));	
 	}
 	
 	/**
@@ -164,7 +164,9 @@ class Mongo {
 	{
 		if(count($find) > 0)
 		{
-			$this->getCollection()->remove($find);
+			return $this->getCollection()->remove($find);
+		} else {
+			return array("n" => 0);
 		}
 	}
 	

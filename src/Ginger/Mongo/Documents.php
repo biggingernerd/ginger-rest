@@ -16,6 +16,9 @@ class Documents {
 	private $_find = array();
 	private $_collection;
 	
+	private $_valid = false;
+	private $_validationErrors = array();
+	
 	protected $_databaseName;
 	protected $_collectionName;
 	protected $_typeName;	
@@ -37,14 +40,18 @@ class Documents {
 		{
 			$this->_find = $find;
 		}
-	
-		$cursor = $this->_collection->find($this->_find);
+		
+		$find = $this->_find;
+		
+		$find = $this->_fixFind($find);
+		
+		$cursor = $this->_mongo->find($find);
 		$this->total = $cursor->count();
 		$this->limit = $this->_mongo->getLimit();
 		$this->offset = $this->_mongo->getOffset();
 		$this->sort = $this->_mongo->getSort();
 		$this->direction = $this->_mongo->getDirection();
-		$this->filter = $this->_find;
+		$this->filters = $this->_find;
 		$className = $this->_typeName;
 		foreach($cursor as $document)
 		{
@@ -52,9 +59,25 @@ class Documents {
 		}
 	}
 	
+	private function _fixFind($find)
+	{
+		if(isset($find['id']))
+		{
+			try {
+				$find['_id'] = new \MongoId($find['id']);	
+			} catch(\MongoException $e) {
+				$find['_id'] = $find['id'];
+			}
+			unset($find['id']);
+		}
+		
+		return $find;
+	}
+
 	public function update($data)
 	{
-		return $this->_collection->update($this->_find, $data);
+		$find = $this->_fixFind($this->_find);
+		return $this->_mongo->update($find, $data);
 	}
 	
 	public function delete()
@@ -62,4 +85,30 @@ class Documents {
 		return $this->_collection->remove($this->_find);
 	}
 	
+	public function validate($data, $required = true)
+	{
+		$className = $this->_validateClass;
+		$rules = $className::$rules;
+		
+		if(!$required)
+		{
+			unset($rules['required']);
+		}
+		
+		$v = new \Valitron\Validator($data);
+		$v->rules($rules);
+
+		if($v->validate()) {
+			$this->_valid = true;
+		} else {
+			$this->_validationErrors = $v->errors();
+			$this->_valid = false;
+		}
+		return $this->_valid;
+	}
+	
+	public function getErrors()
+	{
+		return $this->_validationErrors;
+	}
 }

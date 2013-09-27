@@ -81,4 +81,14 @@ class Url {
 		
 		parse_str($this->query, $this->queryParts);
 	}
+	
+	public function getParameter($key)
+	{
+		if(isset($this->queryParts[$key]))
+		{
+			return $this->queryParts[$key];
+		} else {
+			return false;
+		}
+	}
 }

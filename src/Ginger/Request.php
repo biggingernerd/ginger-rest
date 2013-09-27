@@ -76,7 +76,7 @@ class Request {
 	/**
 	 * Constructor function
 	 */
-	public function __construct()
+	public function __construct($check = true)
 	{
 		Registry::set("Request", $this);
 		

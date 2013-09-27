@@ -21,7 +21,7 @@ class Document
 	private $_collection;
 	private $_valid;
 	private $_validationErrors;
-
+	private $_found = false;
 	public function __construct($data = false)
 	{
 		$this->_className = get_class($this);
@@ -38,6 +38,16 @@ class Document
 			{
 				$this->_prepareId($data['id']);
 				unset($data['id']);
+			} elseif(isset($data['_id']))
+			{
+				$this->_prepareId($data['_id']);
+				unset($data['_id']);
+			}
+			
+			if(!$this->_mongoId)
+			{
+				$this->_mongoId = new \MongoId();
+				$this->id = (string)$this->_mongoId;
 			}
 			
 			// Prefill this document
@@ -87,14 +97,30 @@ class Document
 	private function _get($id)
 	{
 		$document = $this->_mongo->findOne(array("_id" => $id));
+		if($document)
+		{
+			$this->_found = true;
+		}
 		return $document;
+	}
+	
+	public function isFound()
+	{
+		return $this->_found;
 	}
 	
 	public function save()
 	{
+		if(method_exists($this, "_preSave"))
+		{
+			$this->_preSave();
+		}
+	
 		$this->_id = $this->_mongoId;
+		unset($this->id);
 		$a = $this->_mongo->upsert(array("_id" => $this->_mongoId), $this);	
 		unset($this->_id);
+		$this->id = (string)$this->_mongoId;
 		
 	}
 	

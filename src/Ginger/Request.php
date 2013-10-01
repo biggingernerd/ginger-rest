@@ -105,7 +105,7 @@ class Request {
 		{
 			include($fullFilePath);	
 		} else {
-			include(stream_resolve_include_path("error/notfound".$this->getExtension()));
+			throw new \Exception("Not found", 404);
 		}
 		
 		$response = new Response($this);

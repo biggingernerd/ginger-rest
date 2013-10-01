@@ -113,6 +113,8 @@ class Mongo {
 		}
 
 		$cursor = $this->getCollection()->find($find)->limit($this->getLimit())->skip($this->getOffset());
+		$cursor->sort(array($this->getSort() => $this->getMongoDirection()));
+		
 		$this->setTotal($cursor->count());
 		return $cursor;
 	}
@@ -234,6 +236,17 @@ class Mongo {
 	{
 		$this->_sort = $sort;
 	}
+	
+	public function getMongoDirection()
+	{
+		if($this->_direction == "asc")
+		{
+			return 1;
+		} else {
+			return -1;
+		}
+	}
+	
 	/**
 	 * Get direction
 	 * @return string

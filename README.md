@@ -11,3 +11,14 @@ Documentation follows :D
 Todo:
 - Add unit tests (sorry @grmpyprogrammer)
 - Add documentation
+
+
+
+Support
+=======
+
+IRC
+---
+
+irc.freenode.net
+#gingerrest

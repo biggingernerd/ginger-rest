@@ -20,5 +20,4 @@ Support
 IRC
 ---
 
-irc.freenode.net
-#gingerrest
+irc.freenode.net \#gingerrest

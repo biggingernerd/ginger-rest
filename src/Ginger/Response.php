@@ -102,7 +102,7 @@ class Response {
 			$this->_format = $this->_defaultFormat;
 		}
 
-		self::$Callback = \Ginger\System\Parameters::$callback;
+		self::$callback = \Ginger\System\Parameters::$callback;
 		
 		$this->send();
 		

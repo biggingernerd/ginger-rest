@@ -23,7 +23,7 @@ class Jsonp implements Format {
 	 */
 	public static function Parse($data)
 	{
-		return \Ginger\Response::$Callback."(".json_encode($data).");";
+		return \Ginger\Response::$callback."(".json_encode($data).");";
 	}
 	
 }

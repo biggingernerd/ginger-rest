@@ -27,8 +27,8 @@ class Success {
 	 */
 	public static function no_content()
 	{
-		Response::$Status = 204;
-		Response::$Data = array();
+		Response::$status = 204;
+		Response::$data = array();
 	}
 
 	/**
@@ -41,8 +41,8 @@ class Success {
 	 */
 	public static function created($item = array())
 	{
-		Response::$Status = 201;
-		Response::$Data = array("item" => $data);
+		Response::$status = 201;
+		Response::$data = array("item" => $data);
 	}
 
 }

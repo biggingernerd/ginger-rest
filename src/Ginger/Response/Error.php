@@ -32,8 +32,8 @@ class Error {
 			$message = "Resource not found";	
 		}
 		
-		Response::$Status = 404;
-		Response::$Data = array("error" => $message);
+		Response::$status = 404;
+		Response::$data = array("error" => $message);
 	}
 
 	/**
@@ -48,8 +48,8 @@ class Error {
 	{
 		$message = "Incorrect data sent";
 	
-		Response::$Status = 400;
-		Response::$Data = array("error" => "Incorrect data sent", "messages" => $data);
+		Response::$status = 400;
+		Response::$data = array("error" => "Incorrect data sent", "messages" => $data);
 	}
 
 }

@@ -20,7 +20,7 @@ class Response {
 	 * @todo This doesn't belong here?
 	 * @var mixed
 	 */
-	public static $Data;
+	public static $data;
 	
 	/**
 	 * Status code to be returned
@@ -28,7 +28,7 @@ class Response {
 	 * @var int
 	 * @todo This doesn't belong here?
 	 */
-	public static $Status = 200;
+	public static $status = 200;
 	
 	/**
 	 * Callback function used for jsonp calls
@@ -36,7 +36,7 @@ class Response {
 	 * @var string
 	 * @todo This doesn't belong here?
 	 */
-	public static $Callback;
+	public static $callback;
 	
 	/**
 	 * Action name
@@ -44,7 +44,7 @@ class Response {
 	 * @var string
 	 * @todo This doesn't belong here?
 	 */
-	public static $Action;
+	public static $action;
 	
 	
 	/**
@@ -127,11 +127,11 @@ class Response {
 	 */
 	public function send()
 	{
-		$data = $this->_parseDataToString(self::$Data);
+		$data = $this->_parseDataToString(self::$data);
 		$format = $this->_allowedFormats[$this->_format];
 		
 		// Send status header
-		header(self::$Status, true, self::$Status);
+		header(self::$status, true, self::$status);
 		
 		// Send content type header
 		header("Content-Type: ".$format['mimetype']."; charset=utf-8");

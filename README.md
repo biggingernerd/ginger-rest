@@ -17,7 +17,6 @@ Todo:
 Support
 =======
 
-IRC
----
-
 irc.freenode.net \#gingerrest
+
+http://biggingernerd.github.io/ginger-rest/

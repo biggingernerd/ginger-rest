@@ -17,66 +17,208 @@ use \Ginger\System\Parameters;
  */
 class Documents {
 	
+	/**
+	 * total
+	 * 
+	 * @var mixed
+	 * @access public
+	 */
 	public $total;
+	/**
+	 * limit
+	 * 
+	 * @var mixed
+	 * @access public
+	 */
 	public $limit;
+	/**
+	 * offset
+	 * 
+	 * @var mixed
+	 * @access public
+	 */
 	public $offset;
+	/**
+	 * sort
+	 * 
+	 * @var mixed
+	 * @access public
+	 */
 	public $sort;
+	/**
+	 * direction
+	 * 
+	 * @var mixed
+	 * @access public
+	 */
 	public $direction;
+	/**
+	 * filter
+	 * 
+	 * @var mixed
+	 * @access public
+	 */
 	public $filter;
+	/**
+	 * items
+	 * 
+	 * @var mixed
+	 * @access public
+	 */
 	public $items;
 
+	/**
+	 * __construct function.
+	 * 
+	 * @access public
+	 * @param mixed $items
+	 * @param mixed $total
+	 * @param mixed $filter
+	 * @return void
+	 */
 	public function __construct($items, $total, $filter)
 	{
-		$this->set_items($items);
-		$this->set_total($total);
-		$this->set_filter($filter);
+		$this->setItems($items);
+		$this->setTotal($total);
+		$this->setFilter($filter);
 		
-		$this->set_limit(Parameters::$limit);
-		$this->set_offset(Parameters::$offset);
-		$this->set_sort(Parameters::$sort);
-		$this->set_direction(Parameters::$direction);
+		$this->setLimit(Parameters::$limit);
+		$this->setOffset(Parameters::$offset);
+		$this->setSort(Parameters::$sort);
+		$this->setDirection(Parameters::$direction);
 	}
 		
-	public function set_total($value){
+	/**
+	 * setTotal function.
+	 * 
+	 * @access public
+	 * @param mixed $value
+	 * @return void
+	 */
+	public function setTotal($value){
 	    $this->total = $value;
 	}
-	public function set_limit($value){
+	/**
+	 * setLimit function.
+	 * 
+	 * @access public
+	 * @param mixed $value
+	 * @return void
+	 */
+	public function setLimit($value){
 	    $this->limit = $value;
 	}
-	public function set_offset($value){
+	/**
+	 * setOffset function.
+	 * 
+	 * @access public
+	 * @param mixed $value
+	 * @return void
+	 */
+	public function setOffset($value){
 	    $this->offset = $value;
 	}
-	public function set_sort($value){
+	/**
+	 * setSort function.
+	 * 
+	 * @access public
+	 * @param mixed $value
+	 * @return void
+	 */
+	public function setSort($value){
 	    $this->sort = $value;
 	}
-	public function set_direction($value){
+	/**
+	 * setDirection function.
+	 * 
+	 * @access public
+	 * @param mixed $value
+	 * @return void
+	 */
+	public function setDirection($value){
 	    $this->direction = $value;
 	}
-	public function set_filter($value){
+	/**
+	 * setFilter function.
+	 * 
+	 * @access public
+	 * @param mixed $value
+	 * @return void
+	 */
+	public function setFilter($value){
 	    $this->filter = $value;
 	}
-	public function set_items($value){
+	/**
+	 * setItems function.
+	 * 
+	 * @access public
+	 * @param mixed $value
+	 * @return void
+	 */
+	public function setItems($value){
 	    $this->items = $value;
 	}
-	public function get_total(){
+	/**
+	 * getTotal function.
+	 * 
+	 * @access public
+	 * @return void
+	 */
+	public function getTotal(){
 	    return $this->total;
 	}
-	public function get_limit(){
+	/**
+	 * getLimit function.
+	 * 
+	 * @access public
+	 * @return void
+	 */
+	public function getLimit(){
 	    return $this->limit;
 	}
-	public function get_offset(){
+	/**
+	 * getOffset function.
+	 * 
+	 * @access public
+	 * @return void
+	 */
+	public function getOffset(){
 	    return $this->offset;
 	}
-	public function get_sort(){
+	/**
+	 * getSort function.
+	 * 
+	 * @access public
+	 * @return void
+	 */
+	public function getSort(){
 	    return $this->sort;
 	}
-	public function get_direction(){
+	/**
+	 * getDirection function.
+	 * 
+	 * @access public
+	 * @return void
+	 */
+	public function getDirection(){
 	    return $this->direction;
 	}
-	public function get_filter(){
+	/**
+	 * getFilter function.
+	 * 
+	 * @access public
+	 * @return void
+	 */
+	public function getFilter(){
 	    return $this->filter;
 	}
-	public function get_items(){
+	/**
+	 * getItems function.
+	 * 
+	 * @access public
+	 * @return void
+	 */
+	public function getItems(){
 	    return $this->items;
 	}
 

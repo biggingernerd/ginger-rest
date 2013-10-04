@@ -82,6 +82,13 @@ class Url {
 		parse_str($this->query, $this->queryParts);
 	}
 	
+	/**
+	 * getParameter function.
+	 * 
+	 * @access public
+	 * @param mixed $key
+	 * @return void
+	 */
 	public function getParameter($key)
 	{
 		if(isset($this->queryParts[$key]))

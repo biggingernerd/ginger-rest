@@ -237,6 +237,12 @@ class Mongo {
 		$this->_sort = $sort;
 	}
 	
+	/**
+	 * getMongoDirection function.
+	 * 
+	 * @access public
+	 * @return void
+	 */
 	public function getMongoDirection()
 	{
 		if($this->_direction == "asc")

@@ -31,60 +31,60 @@
 <path fill="none" stroke="gray" d="M16,-66C16,-60 22,-54 28,-54"/>
 <text text-anchor="middle" x="161" y="-1373.1" font-family="Times Roman,serif" font-size="11.00" fill="gray">Ginger</text>
 </g>
-<g id="graph4" class="cluster"><title>cluster_\Ginger\Mongo</title>
-<polyline fill="none" stroke="gray" points="211,-1173 281,-1173 "/>
-<path fill="none" stroke="gray" d="M281,-1173C287,-1173 293,-1179 293,-1185"/>
-<polyline fill="none" stroke="gray" points="293,-1185 293,-1344 "/>
+<g id="graph4" class="cluster"><title>cluster_\Ginger\Response</title>
+<polyline fill="none" stroke="gray" points="36,-926 281,-926 "/>
+<path fill="none" stroke="gray" d="M281,-926C287,-926 293,-932 293,-938"/>
+<polyline fill="none" stroke="gray" points="293,-938 293,-1344 "/>
 <path fill="none" stroke="gray" d="M293,-1344C293,-1350 287,-1356 281,-1356"/>
-<polyline fill="none" stroke="gray" points="281,-1356 211,-1356 "/>
-<path fill="none" stroke="gray" d="M211,-1356C205,-1356 199,-1350 199,-1344"/>
-<polyline fill="none" stroke="gray" points="199,-1344 199,-1185 "/>
-<path fill="none" stroke="gray" d="M199,-1185C199,-1179 205,-1173 211,-1173"/>
-<text text-anchor="middle" x="246" y="-1342.1" font-family="Times Roman,serif" font-size="11.00" fill="gray">Mongo</text>
+<polyline fill="none" stroke="gray" points="281,-1356 36,-1356 "/>
+<path fill="none" stroke="gray" d="M36,-1356C30,-1356 24,-1350 24,-1344"/>
+<polyline fill="none" stroke="gray" points="24,-1344 24,-938 "/>
+<path fill="none" stroke="gray" d="M24,-938C24,-932 30,-926 36,-926"/>
+<text text-anchor="middle" x="158.5" y="-1342.1" font-family="Times Roman,serif" font-size="11.00" fill="gray">Response</text>
 </g>
-<g id="graph5" class="cluster"><title>cluster_\Ginger\Oauth</title>
-<polyline fill="none" stroke="gray" points="223,-1090 269,-1090 "/>
-<path fill="none" stroke="gray" d="M269,-1090C275,-1090 281,-1096 281,-1102"/>
-<polyline fill="none" stroke="gray" points="281,-1102 281,-1153 "/>
-<path fill="none" stroke="gray" d="M281,-1153C281,-1159 275,-1165 269,-1165"/>
-<polyline fill="none" stroke="gray" points="269,-1165 223,-1165 "/>
-<path fill="none" stroke="gray" d="M223,-1165C217,-1165 211,-1159 211,-1153"/>
-<polyline fill="none" stroke="gray" points="211,-1153 211,-1102 "/>
-<path fill="none" stroke="gray" d="M211,-1102C211,-1096 217,-1090 223,-1090"/>
-<text text-anchor="middle" x="246" y="-1151.1" font-family="Times Roman,serif" font-size="11.00" fill="gray">Oauth</text>
+<g id="graph5" class="cluster"><title>cluster_\Ginger\Response\Format</title>
+<polyline fill="none" stroke="gray" points="44,-1088 269,-1088 "/>
+<path fill="none" stroke="gray" d="M269,-1088C275,-1088 281,-1094 281,-1100"/>
+<polyline fill="none" stroke="gray" points="281,-1100 281,-1313 "/>
+<path fill="none" stroke="gray" d="M281,-1313C281,-1319 275,-1325 269,-1325"/>
+<polyline fill="none" stroke="gray" points="269,-1325 44,-1325 "/>
+<path fill="none" stroke="gray" d="M44,-1325C38,-1325 32,-1319 32,-1313"/>
+<polyline fill="none" stroke="gray" points="32,-1313 32,-1100 "/>
+<path fill="none" stroke="gray" d="M32,-1100C32,-1094 38,-1088 44,-1088"/>
+<text text-anchor="middle" x="156.5" y="-1311.1" font-family="Times Roman,serif" font-size="11.00" fill="gray">Format</text>
 </g>
-<g id="graph6" class="cluster"><title>cluster_\Ginger\Request</title>
-<polyline fill="none" stroke="gray" points="208,-899 284,-899 "/>
-<path fill="none" stroke="gray" d="M284,-899C290,-899 296,-905 296,-911"/>
-<polyline fill="none" stroke="gray" points="296,-911 296,-1070 "/>
-<path fill="none" stroke="gray" d="M296,-1070C296,-1076 290,-1082 284,-1082"/>
-<polyline fill="none" stroke="gray" points="284,-1082 208,-1082 "/>
-<path fill="none" stroke="gray" d="M208,-1082C202,-1082 196,-1076 196,-1070"/>
-<polyline fill="none" stroke="gray" points="196,-1070 196,-911 "/>
-<path fill="none" stroke="gray" d="M196,-911C196,-905 202,-899 208,-899"/>
-<text text-anchor="middle" x="246" y="-1068.1" font-family="Times Roman,serif" font-size="11.00" fill="gray">Request</text>
+<g id="graph6" class="cluster"><title>cluster_\Ginger\Mongo</title>
+<polyline fill="none" stroke="gray" points="211,-735 281,-735 "/>
+<path fill="none" stroke="gray" d="M281,-735C287,-735 293,-741 293,-747"/>
+<polyline fill="none" stroke="gray" points="293,-747 293,-906 "/>
+<path fill="none" stroke="gray" d="M293,-906C293,-912 287,-918 281,-918"/>
+<polyline fill="none" stroke="gray" points="281,-918 211,-918 "/>
+<path fill="none" stroke="gray" d="M211,-918C205,-918 199,-912 199,-906"/>
+<polyline fill="none" stroke="gray" points="199,-906 199,-747 "/>
+<path fill="none" stroke="gray" d="M199,-747C199,-741 205,-735 211,-735"/>
+<text text-anchor="middle" x="246" y="-904.1" font-family="Times Roman,serif" font-size="11.00" fill="gray">Mongo</text>
 </g>
-<g id="graph7" class="cluster"><title>cluster_\Ginger\Response</title>
-<polyline fill="none" stroke="gray" points="36,-461 281,-461 "/>
-<path fill="none" stroke="gray" d="M281,-461C287,-461 293,-467 293,-473"/>
-<polyline fill="none" stroke="gray" points="293,-473 293,-879 "/>
-<path fill="none" stroke="gray" d="M293,-879C293,-885 287,-891 281,-891"/>
-<polyline fill="none" stroke="gray" points="281,-891 36,-891 "/>
-<path fill="none" stroke="gray" d="M36,-891C30,-891 24,-885 24,-879"/>
-<polyline fill="none" stroke="gray" points="24,-879 24,-473 "/>
-<path fill="none" stroke="gray" d="M24,-473C24,-467 30,-461 36,-461"/>
-<text text-anchor="middle" x="158.5" y="-877.1" font-family="Times Roman,serif" font-size="11.00" fill="gray">Response</text>
+<g id="graph7" class="cluster"><title>cluster_\Ginger\Request</title>
+<polyline fill="none" stroke="gray" points="208,-544 284,-544 "/>
+<path fill="none" stroke="gray" d="M284,-544C290,-544 296,-550 296,-556"/>
+<polyline fill="none" stroke="gray" points="296,-556 296,-715 "/>
+<path fill="none" stroke="gray" d="M296,-715C296,-721 290,-727 284,-727"/>
+<polyline fill="none" stroke="gray" points="284,-727 208,-727 "/>
+<path fill="none" stroke="gray" d="M208,-727C202,-727 196,-721 196,-715"/>
+<polyline fill="none" stroke="gray" points="196,-715 196,-556 "/>
+<path fill="none" stroke="gray" d="M196,-556C196,-550 202,-544 208,-544"/>
+<text text-anchor="middle" x="246" y="-713.1" font-family="Times Roman,serif" font-size="11.00" fill="gray">Request</text>
 </g>
-<g id="graph8" class="cluster"><title>cluster_\Ginger\Response\Format</title>
-<polyline fill="none" stroke="gray" points="44,-623 269,-623 "/>
-<path fill="none" stroke="gray" d="M269,-623C275,-623 281,-629 281,-635"/>
-<polyline fill="none" stroke="gray" points="281,-635 281,-848 "/>
-<path fill="none" stroke="gray" d="M281,-848C281,-854 275,-860 269,-860"/>
-<polyline fill="none" stroke="gray" points="269,-860 44,-860 "/>
-<path fill="none" stroke="gray" d="M44,-860C38,-860 32,-854 32,-848"/>
-<polyline fill="none" stroke="gray" points="32,-848 32,-635 "/>
-<path fill="none" stroke="gray" d="M32,-635C32,-629 38,-623 44,-623"/>
-<text text-anchor="middle" x="156.5" y="-846.1" font-family="Times Roman,serif" font-size="11.00" fill="gray">Format</text>
+<g id="graph8" class="cluster"><title>cluster_\Ginger\Oauth</title>
+<polyline fill="none" stroke="gray" points="223,-461 269,-461 "/>
+<path fill="none" stroke="gray" d="M269,-461C275,-461 281,-467 281,-473"/>
+<polyline fill="none" stroke="gray" points="281,-473 281,-524 "/>
+<path fill="none" stroke="gray" d="M281,-524C281,-530 275,-536 269,-536"/>
+<polyline fill="none" stroke="gray" points="269,-536 223,-536 "/>
+<path fill="none" stroke="gray" d="M223,-536C217,-536 211,-530 211,-524"/>
+<polyline fill="none" stroke="gray" points="211,-524 211,-473 "/>
+<path fill="none" stroke="gray" d="M211,-473C211,-467 217,-461 223,-461"/>
+<text text-anchor="middle" x="246" y="-522.1" font-family="Times Roman,serif" font-size="11.00" fill="gray">Oauth</text>
 </g>
 <g id="graph9" class="cluster"><title>cluster_\Ginger\System</title>
 <polyline fill="none" stroke="gray" points="208,-378 284,-378 "/>
@@ -97,155 +97,155 @@
 <path fill="none" stroke="gray" d="M196,-390C196,-384 202,-378 208,-378"/>
 <text text-anchor="middle" x="246" y="-439.1" font-family="Times Roman,serif" font-size="11.00" fill="gray">System</text>
 </g>
-<!-- \\Ginger\\Mongo\\Defaults -->
-<g id="node4" class="node"><title>\\Ginger\\Mongo\\Defaults</title>
-<polygon fill="none" stroke="black" points="281,-1325 211,-1325 211,-1289 281,-1289 281,-1325"/>
-<text text-anchor="middle" x="246" y="-1304.1" font-family="Courier,monospace" font-size="11.00">Defaults</text>
+<!-- \\Ginger\\Response\\Format\\Phps -->
+<g id="node5" class="node"><title>\\Ginger\\Response\\Format\\Phps</title>
+<polygon fill="none" stroke="black" points="273,-1294 219,-1294 219,-1258 273,-1258 273,-1294"/>
+<text text-anchor="middle" x="246" y="-1273.1" font-family="Courier,monospace" font-size="11.00">Phps</text>
 </g>
-<!-- \\Ginger\\Mongo\\Document -->
-<g id="node5" class="node"><title>\\Ginger\\Mongo\\Document</title>
-<polygon fill="none" stroke="black" points="281,-1271 211,-1271 211,-1235 281,-1235 281,-1271"/>
-<text text-anchor="middle" x="246" y="-1250.1" font-family="Courier,monospace" font-size="11.00">Document</text>
+<!-- \\Ginger\\Response\\Format\\Format -->
+<g id="node9" class="node"><title>\\Ginger\\Response\\Format\\Format</title>
+<polygon fill="none" stroke="black" points="97,-1213 41,-1213 41,-1177 97,-1177 97,-1213"/>
+<text text-anchor="middle" x="69" y="-1192.1" font-family="Courier,monospace" font-size="11.00">Format</text>
+</g>
+<!-- \\Ginger\\Response\\Format\\Phps&#45;&gt;\\Ginger\\Response\\Format\\Format -->
+<g id="edge10" class="edge"><title>\\Ginger\\Response\\Format\\Phps&#45;&gt;\\Ginger\\Response\\Format\\Format</title>
+<path fill="none" stroke="black" stroke-dasharray="1,5" d="M218.732,-1263.52C188.9,-1249.87 140.861,-1227.89 107.264,-1212.51"/>
+<polygon fill="none" stroke="black" points="108.318,-1209.14 97.7688,-1208.17 105.405,-1215.51 108.318,-1209.14"/>
+</g>
+<!-- \\Ginger\\Response\\Format\\Xml -->
+<g id="node6" class="node"><title>\\Ginger\\Response\\Format\\Xml</title>
+<polygon fill="none" stroke="black" points="273,-1240 219,-1240 219,-1204 273,-1204 273,-1240"/>
+<text text-anchor="middle" x="246" y="-1219.1" font-family="Courier,monospace" font-size="11.00">Xml</text>
+</g>
+<!-- \\Ginger\\Response\\Format\\Xml&#45;&gt;\\Ginger\\Response\\Format\\Format -->
+<g id="edge14" class="edge"><title>\\Ginger\\Response\\Format\\Xml&#45;&gt;\\Ginger\\Response\\Format\\Format</title>
+<path fill="none" stroke="black" stroke-dasharray="1,5" d="M218.732,-1217.84C189.028,-1213.31 141.273,-1206.02 107.698,-1200.9"/>
+<polygon fill="none" stroke="black" points="108.182,-1197.44 97.7688,-1199.39 107.127,-1204.36 108.182,-1197.44"/>
+</g>
+<!-- \\Ginger\\Response\\Format\\Json -->
+<g id="node7" class="node"><title>\\Ginger\\Response\\Format\\Json</title>
+<polygon fill="none" stroke="black" points="273,-1186 219,-1186 219,-1150 273,-1150 273,-1186"/>
+<text text-anchor="middle" x="246" y="-1165.1" font-family="Courier,monospace" font-size="11.00">Json</text>
+</g>
+<!-- \\Ginger\\Response\\Format\\Json&#45;&gt;\\Ginger\\Response\\Format\\Format -->
+<g id="edge18" class="edge"><title>\\Ginger\\Response\\Format\\Json&#45;&gt;\\Ginger\\Response\\Format\\Format</title>
+<path fill="none" stroke="black" stroke-dasharray="1,5" d="M218.732,-1172.16C189.028,-1176.69 141.273,-1183.98 107.698,-1189.1"/>
+<polygon fill="none" stroke="black" points="107.127,-1185.64 97.7688,-1190.61 108.182,-1192.56 107.127,-1185.64"/>
+</g>
+<!-- \\Ginger\\Response\\Format\\Jsonp -->
+<g id="node8" class="node"><title>\\Ginger\\Response\\Format\\Jsonp</title>
+<polygon fill="none" stroke="black" points="273,-1132 219,-1132 219,-1096 273,-1096 273,-1132"/>
+<text text-anchor="middle" x="246" y="-1111.1" font-family="Courier,monospace" font-size="11.00">Jsonp</text>
+</g>
+<!-- \\Ginger\\Response\\Format\\Jsonp&#45;&gt;\\Ginger\\Response\\Format\\Format -->
+<g id="edge20" class="edge"><title>\\Ginger\\Response\\Format\\Jsonp&#45;&gt;\\Ginger\\Response\\Format\\Format</title>
+<path fill="none" stroke="black" stroke-dasharray="1,5" d="M218.605,-1127.52C193.601,-1139.75 155.542,-1158.07 122,-1173 117.23,-1175.12 112.192,-1177.3 107.196,-1179.42"/>
+<polygon fill="none" stroke="black" points="105.589,-1176.3 97.7196,-1183.39 108.295,-1182.75 105.589,-1176.3"/>
+</g>
+<!-- \\Ginger\\Response\\Documents -->
+<g id="node10" class="node"><title>\\Ginger\\Response\\Documents</title>
+<polygon fill="none" stroke="black" points="284,-1078 208,-1078 208,-1042 284,-1042 284,-1078"/>
+<text text-anchor="middle" x="246" y="-1057.1" font-family="Courier,monospace" font-size="11.00">Documents</text>
+</g>
+<!-- \\Ginger\\Response\\Success -->
+<g id="node11" class="node"><title>\\Ginger\\Response\\Success</title>
+<polygon fill="none" stroke="black" points="278,-1024 214,-1024 214,-988 278,-988 278,-1024"/>
+<text text-anchor="middle" x="246" y="-1003.1" font-family="Courier,monospace" font-size="11.00">Success</text>
+</g>
+<!-- \\Ginger\\Response\\Error -->
+<g id="node12" class="node"><title>\\Ginger\\Response\\Error</title>
+<polygon fill="none" stroke="black" points="273,-970 219,-970 219,-934 273,-934 273,-970"/>
+<text text-anchor="middle" x="246" y="-949.1" font-family="Courier,monospace" font-size="11.00">Error</text>
 </g>
 <!-- \\Ginger\\Mongo\\Documents -->
-<g id="node6" class="node"><title>\\Ginger\\Mongo\\Documents</title>
-<polygon fill="none" stroke="black" points="284,-1217 208,-1217 208,-1181 284,-1181 284,-1217"/>
-<text text-anchor="middle" x="246" y="-1196.1" font-family="Courier,monospace" font-size="11.00">Documents</text>
+<g id="node14" class="node"><title>\\Ginger\\Mongo\\Documents</title>
+<polygon fill="none" stroke="black" points="284,-887 208,-887 208,-851 284,-851 284,-887"/>
+<text text-anchor="middle" x="246" y="-866.1" font-family="Courier,monospace" font-size="11.00">Documents</text>
 </g>
-<!-- \\Ginger\\Oauth\\Token -->
-<g id="node8" class="node"><title>\\Ginger\\Oauth\\Token</title>
-<polygon fill="none" stroke="black" points="273,-1134 219,-1134 219,-1098 273,-1098 273,-1134"/>
-<text text-anchor="middle" x="246" y="-1113.1" font-family="Courier,monospace" font-size="11.00">Token</text>
+<!-- \\Ginger\\Mongo\\Document -->
+<g id="node15" class="node"><title>\\Ginger\\Mongo\\Document</title>
+<polygon fill="none" stroke="black" points="281,-833 211,-833 211,-797 281,-797 281,-833"/>
+<text text-anchor="middle" x="246" y="-812.1" font-family="Courier,monospace" font-size="11.00">Document</text>
 </g>
-<!-- \\Ginger\\Request\\Parameters -->
-<g id="node10" class="node"><title>\\Ginger\\Request\\Parameters</title>
-<polygon fill="none" stroke="black" points="288,-1051 204,-1051 204,-1015 288,-1015 288,-1051"/>
-<text text-anchor="middle" x="246" y="-1030.1" font-family="Courier,monospace" font-size="11.00">Parameters</text>
-</g>
-<!-- \\Ginger\\Request\\Route -->
-<g id="node11" class="node"><title>\\Ginger\\Request\\Route</title>
-<polygon fill="none" stroke="black" points="273,-997 219,-997 219,-961 273,-961 273,-997"/>
-<text text-anchor="middle" x="246" y="-976.1" font-family="Courier,monospace" font-size="11.00">Route</text>
+<!-- \\Ginger\\Mongo\\Defaults -->
+<g id="node16" class="node"><title>\\Ginger\\Mongo\\Defaults</title>
+<polygon fill="none" stroke="black" points="281,-779 211,-779 211,-743 281,-743 281,-779"/>
+<text text-anchor="middle" x="246" y="-758.1" font-family="Courier,monospace" font-size="11.00">Defaults</text>
 </g>
 <!-- \\Ginger\\Request\\Url -->
-<g id="node12" class="node"><title>\\Ginger\\Request\\Url</title>
-<polygon fill="none" stroke="black" points="273,-943 219,-943 219,-907 273,-907 273,-943"/>
-<text text-anchor="middle" x="246" y="-922.1" font-family="Courier,monospace" font-size="11.00">Url</text>
+<g id="node18" class="node"><title>\\Ginger\\Request\\Url</title>
+<polygon fill="none" stroke="black" points="273,-696 219,-696 219,-660 273,-660 273,-696"/>
+<text text-anchor="middle" x="246" y="-675.1" font-family="Courier,monospace" font-size="11.00">Url</text>
 </g>
 <!-- \\Ginger\\Url -->
-<g id="node30" class="node"><title>\\Ginger\\Url</title>
-<polygon fill="none" stroke="black" points="96,-943 42,-943 42,-907 96,-907 96,-943"/>
-<text text-anchor="middle" x="69" y="-922.1" font-family="Courier,monospace" font-size="11.00">Url</text>
+<g id="node28" class="node"><title>\\Ginger\\Url</title>
+<polygon fill="none" stroke="black" points="96,-696 42,-696 42,-660 96,-660 96,-696"/>
+<text text-anchor="middle" x="69" y="-675.1" font-family="Courier,monospace" font-size="11.00">Url</text>
 </g>
 <!-- \\Ginger\\Request\\Url&#45;&gt;\\Ginger\\Url -->
 <g id="edge12" class="edge"><title>\\Ginger\\Request\\Url&#45;&gt;\\Ginger\\Url</title>
-<path fill="none" stroke="black" d="M218.732,-925C188.631,-925 139.994,-925 106.359,-925"/>
-<polygon fill="none" stroke="black" points="106.009,-921.5 96.0089,-925 106.009,-928.5 106.009,-921.5"/>
+<path fill="none" stroke="black" d="M218.732,-678C188.631,-678 139.994,-678 106.359,-678"/>
+<polygon fill="none" stroke="black" points="106.009,-674.5 96.0089,-678 106.009,-681.5 106.009,-674.5"/>
 </g>
-<!-- \\Ginger\\Response\\Format\\Json -->
-<g id="node15" class="node"><title>\\Ginger\\Response\\Format\\Json</title>
-<polygon fill="none" stroke="black" points="273,-829 219,-829 219,-793 273,-793 273,-829"/>
-<text text-anchor="middle" x="246" y="-808.1" font-family="Courier,monospace" font-size="11.00">Json</text>
+<!-- \\Ginger\\Request\\Parameters -->
+<g id="node19" class="node"><title>\\Ginger\\Request\\Parameters</title>
+<polygon fill="none" stroke="black" points="288,-642 204,-642 204,-606 288,-606 288,-642"/>
+<text text-anchor="middle" x="246" y="-621.1" font-family="Courier,monospace" font-size="11.00">Parameters</text>
 </g>
-<!-- \\Ginger\\Response\\Format\\Format -->
-<g id="node19" class="node"><title>\\Ginger\\Response\\Format\\Format</title>
-<polygon fill="none" stroke="black" points="97,-748 41,-748 41,-712 97,-712 97,-748"/>
-<text text-anchor="middle" x="69" y="-727.1" font-family="Courier,monospace" font-size="11.00">Format</text>
+<!-- \\Ginger\\Request\\Route -->
+<g id="node20" class="node"><title>\\Ginger\\Request\\Route</title>
+<polygon fill="none" stroke="black" points="273,-588 219,-588 219,-552 273,-552 273,-588"/>
+<text text-anchor="middle" x="246" y="-567.1" font-family="Courier,monospace" font-size="11.00">Route</text>
 </g>
-<!-- \\Ginger\\Response\\Format\\Json&#45;&gt;\\Ginger\\Response\\Format\\Format -->
-<g id="edge14" class="edge"><title>\\Ginger\\Response\\Format\\Json&#45;&gt;\\Ginger\\Response\\Format\\Format</title>
-<path fill="none" stroke="black" stroke-dasharray="1,5" d="M218.605,-797.475C193.601,-785.248 155.542,-766.93 122,-752 117.23,-749.877 112.192,-747.701 107.196,-745.583"/>
-<polygon fill="none" stroke="black" points="108.295,-742.249 97.7196,-741.611 105.589,-748.705 108.295,-742.249"/>
-</g>
-<!-- \\Ginger\\Response\\Format\\Jsonp -->
-<g id="node16" class="node"><title>\\Ginger\\Response\\Format\\Jsonp</title>
-<polygon fill="none" stroke="black" points="273,-775 219,-775 219,-739 273,-739 273,-775"/>
-<text text-anchor="middle" x="246" y="-754.1" font-family="Courier,monospace" font-size="11.00">Jsonp</text>
-</g>
-<!-- \\Ginger\\Response\\Format\\Jsonp&#45;&gt;\\Ginger\\Response\\Format\\Format -->
-<g id="edge16" class="edge"><title>\\Ginger\\Response\\Format\\Jsonp&#45;&gt;\\Ginger\\Response\\Format\\Format</title>
-<path fill="none" stroke="black" stroke-dasharray="1,5" d="M218.732,-752.84C189.028,-748.309 141.273,-741.025 107.698,-735.903"/>
-<polygon fill="none" stroke="black" points="108.182,-732.437 97.7688,-734.388 107.127,-739.357 108.182,-732.437"/>
-</g>
-<!-- \\Ginger\\Response\\Format\\Phps -->
-<g id="node17" class="node"><title>\\Ginger\\Response\\Format\\Phps</title>
-<polygon fill="none" stroke="black" points="273,-721 219,-721 219,-685 273,-685 273,-721"/>
-<text text-anchor="middle" x="246" y="-700.1" font-family="Courier,monospace" font-size="11.00">Phps</text>
-</g>
-<!-- \\Ginger\\Response\\Format\\Phps&#45;&gt;\\Ginger\\Response\\Format\\Format -->
-<g id="edge18" class="edge"><title>\\Ginger\\Response\\Format\\Phps&#45;&gt;\\Ginger\\Response\\Format\\Format</title>
-<path fill="none" stroke="black" stroke-dasharray="1,5" d="M218.732,-707.16C189.028,-711.691 141.273,-718.975 107.698,-724.097"/>
-<polygon fill="none" stroke="black" points="107.127,-720.643 97.7688,-725.612 108.182,-727.563 107.127,-720.643"/>
-</g>
-<!-- \\Ginger\\Response\\Format\\Xml -->
-<g id="node18" class="node"><title>\\Ginger\\Response\\Format\\Xml</title>
-<polygon fill="none" stroke="black" points="273,-667 219,-667 219,-631 273,-631 273,-667"/>
-<text text-anchor="middle" x="246" y="-646.1" font-family="Courier,monospace" font-size="11.00">Xml</text>
-</g>
-<!-- \\Ginger\\Response\\Format\\Xml&#45;&gt;\\Ginger\\Response\\Format\\Format -->
-<g id="edge20" class="edge"><title>\\Ginger\\Response\\Format\\Xml&#45;&gt;\\Ginger\\Response\\Format\\Format</title>
-<path fill="none" stroke="black" stroke-dasharray="1,5" d="M218.605,-662.525C193.601,-674.752 155.542,-693.07 122,-708 117.23,-710.123 112.192,-712.299 107.196,-714.417"/>
-<polygon fill="none" stroke="black" points="105.589,-711.295 97.7196,-718.389 108.295,-717.751 105.589,-711.295"/>
-</g>
-<!-- \\Ginger\\Response\\Documents -->
-<g id="node20" class="node"><title>\\Ginger\\Response\\Documents</title>
-<polygon fill="none" stroke="black" points="284,-613 208,-613 208,-577 284,-577 284,-613"/>
-<text text-anchor="middle" x="246" y="-592.1" font-family="Courier,monospace" font-size="11.00">Documents</text>
-</g>
-<!-- \\Ginger\\Response\\Error -->
-<g id="node21" class="node"><title>\\Ginger\\Response\\Error</title>
-<polygon fill="none" stroke="black" points="273,-559 219,-559 219,-523 273,-523 273,-559"/>
-<text text-anchor="middle" x="246" y="-538.1" font-family="Courier,monospace" font-size="11.00">Error</text>
-</g>
-<!-- \\Ginger\\Response\\Success -->
-<g id="node22" class="node"><title>\\Ginger\\Response\\Success</title>
-<polygon fill="none" stroke="black" points="278,-505 214,-505 214,-469 278,-469 278,-505"/>
-<text text-anchor="middle" x="246" y="-484.1" font-family="Courier,monospace" font-size="11.00">Success</text>
+<!-- \\Ginger\\Oauth\\Token -->
+<g id="node22" class="node"><title>\\Ginger\\Oauth\\Token</title>
+<polygon fill="none" stroke="black" points="273,-505 219,-505 219,-469 273,-469 273,-505"/>
+<text text-anchor="middle" x="246" y="-484.1" font-family="Courier,monospace" font-size="11.00">Token</text>
 </g>
 <!-- \\Ginger\\System\\Parameters -->
 <g id="node24" class="node"><title>\\Ginger\\System\\Parameters</title>
 <polygon fill="none" stroke="black" points="288,-422 204,-422 204,-386 288,-386 288,-422"/>
 <text text-anchor="middle" x="246" y="-401.1" font-family="Courier,monospace" font-size="11.00">Parameters</text>
 </g>
+<!-- \\Ginger\\Response -->
+<g id="node25" class="node"><title>\\Ginger\\Response</title>
+<polygon fill="none" stroke="black" points="281,-368 211,-368 211,-332 281,-332 281,-368"/>
+<text text-anchor="middle" x="246" y="-347.1" font-family="Courier,monospace" font-size="11.00">Response</text>
+</g>
+<!-- \\Ginger\\XMLSerializer -->
+<g id="node26" class="node"><title>\\Ginger\\XMLSerializer</title>
+<polygon fill="none" stroke="black" points="298,-314 194,-314 194,-278 298,-278 298,-314"/>
+<text text-anchor="middle" x="246" y="-293.1" font-family="Courier,monospace" font-size="11.00">XMLSerializer</text>
+</g>
+<!-- \\Ginger\\Request -->
+<g id="node27" class="node"><title>\\Ginger\\Request</title>
+<polygon fill="none" stroke="black" points="278,-260 214,-260 214,-224 278,-224 278,-260"/>
+<text text-anchor="middle" x="246" y="-239.1" font-family="Courier,monospace" font-size="11.00">Request</text>
+</g>
 <!-- \\Ginger\\Exception -->
-<g id="node25" class="node"><title>\\Ginger\\Exception</title>
-<polygon fill="none" stroke="black" points="284,-368 208,-368 208,-332 284,-332 284,-368"/>
-<text text-anchor="middle" x="246" y="-347.1" font-family="Courier,monospace" font-size="11.00">Exception</text>
+<g id="node29" class="node"><title>\\Ginger\\Exception</title>
+<polygon fill="none" stroke="black" points="284,-206 208,-206 208,-170 284,-170 284,-206"/>
+<text text-anchor="middle" x="246" y="-185.1" font-family="Courier,monospace" font-size="11.00">Exception</text>
 </g>
 <!-- \\Exception -->
-<g id="node33" class="node"><title>\\Exception</title>
+<g id="node36" class="node"><title>\\Exception</title>
 <ellipse fill="none" stroke="black" cx="69" cy="-19" rx="53.033" ry="19.0919"/>
 <text text-anchor="middle" x="69" y="-15.9" font-family="Times Roman,serif" font-size="14.00" fill="gray">\Exception</text>
 </g>
 <!-- \\Ginger\\Exception&#45;&gt;\\Exception -->
-<g id="edge10" class="edge"><title>\\Ginger\\Exception&#45;&gt;\\Exception</title>
-<path fill="none" stroke="black" d="M207.417,-334.006C202.496,-330.859 197.845,-327.203 194,-323 118.754,-240.756 85.5599,-107.021 74.0543,-48.2623"/>
-<polygon fill="none" stroke="black" points="77.4476,-47.3696 72.1531,-38.1926 70.5692,-48.6683 77.4476,-47.3696"/>
+<g id="edge16" class="edge"><title>\\Ginger\\Exception&#45;&gt;\\Exception</title>
+<path fill="none" stroke="black" d="M207.293,-170.829C202.559,-167.905 197.992,-164.624 194,-161 150.463,-121.474 164.529,-90.6089 122,-50 118.195,-46.3664 113.886,-42.9815 109.411,-39.8845"/>
+<polygon fill="none" stroke="black" points="110.993,-36.7419 100.685,-34.2941 107.217,-42.6359 110.993,-36.7419"/>
 </g>
 <!-- \\Ginger\\Mongo -->
-<g id="node26" class="node"><title>\\Ginger\\Mongo</title>
-<polygon fill="none" stroke="black" points="273,-314 219,-314 219,-278 273,-278 273,-314"/>
-<text text-anchor="middle" x="246" y="-293.1" font-family="Courier,monospace" font-size="11.00">Mongo</text>
+<g id="node30" class="node"><title>\\Ginger\\Mongo</title>
+<polygon fill="none" stroke="black" points="273,-152 219,-152 219,-116 273,-116 273,-152"/>
+<text text-anchor="middle" x="246" y="-131.1" font-family="Courier,monospace" font-size="11.00">Mongo</text>
 </g>
 <!-- \\Ginger\\Registry -->
-<g id="node27" class="node"><title>\\Ginger\\Registry</title>
-<polygon fill="none" stroke="black" points="281,-260 211,-260 211,-224 281,-224 281,-260"/>
-<text text-anchor="middle" x="246" y="-239.1" font-family="Courier,monospace" font-size="11.00">Registry</text>
-</g>
-<!-- \\Ginger\\Request -->
-<g id="node28" class="node"><title>\\Ginger\\Request</title>
-<polygon fill="none" stroke="black" points="278,-206 214,-206 214,-170 278,-170 278,-206"/>
-<text text-anchor="middle" x="246" y="-185.1" font-family="Courier,monospace" font-size="11.00">Request</text>
-</g>
-<!-- \\Ginger\\Response -->
-<g id="node29" class="node"><title>\\Ginger\\Response</title>
-<polygon fill="none" stroke="black" points="281,-152 211,-152 211,-116 281,-116 281,-152"/>
-<text text-anchor="middle" x="246" y="-131.1" font-family="Courier,monospace" font-size="11.00">Response</text>
-</g>
-<!-- \\Ginger\\XMLSerializer -->
-<g id="node31" class="node"><title>\\Ginger\\XMLSerializer</title>
-<polygon fill="none" stroke="black" points="298,-98 194,-98 194,-62 298,-62 298,-98"/>
-<text text-anchor="middle" x="246" y="-77.1" font-family="Courier,monospace" font-size="11.00">XMLSerializer</text>
+<g id="node31" class="node"><title>\\Ginger\\Registry</title>
+<polygon fill="none" stroke="black" points="281,-98 211,-98 211,-62 281,-62 281,-98"/>
+<text text-anchor="middle" x="246" y="-77.1" font-family="Courier,monospace" font-size="11.00">Registry</text>
 </g>
 </g>
 </svg>

@@ -15,13 +15,64 @@ namespace Ginger\Mongo;
  */
 class Document 
 {
+	/**
+	 * _className
+	 * 
+	 * @var mixed
+	 * @access private
+	 */
 	private $_className;
+	/**
+	 * _mongoId
+	 * 
+	 * @var mixed
+	 * @access private
+	 */
 	private $_mongoId;
+	/**
+	 * _mongo
+	 * 
+	 * @var mixed
+	 * @access private
+	 */
 	private $_mongo;
+	/**
+	 * _collection
+	 * 
+	 * @var mixed
+	 * @access private
+	 */
 	private $_collection;
+	/**
+	 * _valid
+	 * 
+	 * @var mixed
+	 * @access private
+	 */
 	private $_valid;
+	/**
+	 * _validationErrors
+	 * 
+	 * @var mixed
+	 * @access private
+	 */
 	private $_validationErrors;
+	/**
+	 * _found
+	 * 
+	 * (default value: false)
+	 * 
+	 * @var bool
+	 * @access private
+	 */
 	private $_found = false;
+	/**
+	 * __construct function.
+	 * 
+	 * @access public
+	 * @param bool $data (default: false)
+	 * @return void
+	 */
 	public function __construct($data = false)
 	{
 		$this->_className = get_class($this);
@@ -30,6 +81,13 @@ class Document
 		$this->_prepare($data);
 	}
 
+	/**
+	 * _prepare function.
+	 * 
+	 * @access private
+	 * @param mixed $data
+	 * @return void
+	 */
 	private function _prepare($data)
 	{
 		if($data && is_array($data))
@@ -64,6 +122,13 @@ class Document
 		}
 	}
 	
+	/**
+	 * _prepareId function.
+	 * 
+	 * @access private
+	 * @param mixed $id
+	 * @return void
+	 */
 	private function _prepareId($id)
 	{
 		if(is_string($id))
@@ -82,6 +147,13 @@ class Document
 		return $this->_mongoId;
 	}
 
+	/**
+	 * _mapDocument function.
+	 * 
+	 * @access private
+	 * @param mixed $data
+	 * @return void
+	 */
 	private function _mapDocument($data)
 	{
 		$fields = get_public_object_vars($this);
@@ -94,6 +166,13 @@ class Document
 		}
 	}
 	
+	/**
+	 * _get function.
+	 * 
+	 * @access private
+	 * @param mixed $id
+	 * @return void
+	 */
 	private function _get($id)
 	{
 		$document = $this->_mongo->findOne(array("_id" => $id));
@@ -104,11 +183,23 @@ class Document
 		return $document;
 	}
 	
+	/**
+	 * isFound function.
+	 * 
+	 * @access public
+	 * @return void
+	 */
 	public function isFound()
 	{
 		return $this->_found;
 	}
 	
+	/**
+	 * save function.
+	 * 
+	 * @access public
+	 * @return void
+	 */
 	public function save()
 	{
 		if(method_exists($this, "_preSave"))
@@ -124,11 +215,23 @@ class Document
 		
 	}
 	
+	/**
+	 * delete function.
+	 * 
+	 * @access public
+	 * @return void
+	 */
 	public function delete()
 	{
 		$this->_mongo->remove(array("_id" => $this->_mongoId));
 	}
 
+	/**
+	 * validate function.
+	 * 
+	 * @access public
+	 * @return void
+	 */
 	public function validate()
 	{
 		$className = $this->_className."\\Validator";
@@ -146,6 +249,12 @@ class Document
 		return $this->_valid;
 	}	
 	
+	/**
+	 * getErrors function.
+	 * 
+	 * @access public
+	 * @return void
+	 */
 	public function getErrors()
 	{
 		return $this->_validationErrors;

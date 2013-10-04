@@ -1,29 +1,147 @@
 <?php
+/**
+ * Ginger/Mongo/Documents.php
+ * 
+ * @author Big Ginger Nerd
+ * @package Ginger
+ */
 
 namespace Ginger\Mongo;
 
+/**
+ * Documents class.
+ */
 class Documents {
 	
+	/**
+	 * total
+	 * 
+	 * (default value: 0)
+	 * 
+	 * @var int
+	 * @access public
+	 */
 	public $total = 0;
+	/**
+	 * limit
+	 * 
+	 * @var mixed
+	 * @access public
+	 */
 	public $limit;
+	/**
+	 * offset
+	 * 
+	 * @var mixed
+	 * @access public
+	 */
 	public $offset;
+	/**
+	 * sort
+	 * 
+	 * @var mixed
+	 * @access public
+	 */
 	public $sort;
+	/**
+	 * direction
+	 * 
+	 * @var mixed
+	 * @access public
+	 */
 	public $direction;
+	/**
+	 * filters
+	 * 
+	 * (default value: array())
+	 * 
+	 * @var array
+	 * @access public
+	 */
 	public $filters = array();
+	/**
+	 * items
+	 * 
+	 * (default value: array())
+	 * 
+	 * @var array
+	 * @access public
+	 */
 	public $items = array();
 	
+	/**
+	 * _mongo
+	 * 
+	 * @var mixed
+	 * @access private
+	 */
 	private $_mongo;
+	/**
+	 * _find
+	 * 
+	 * (default value: array())
+	 * 
+	 * @var array
+	 * @access private
+	 */
 	private $_find = array();
+	/**
+	 * _collection
+	 * 
+	 * @var mixed
+	 * @access private
+	 */
 	private $_collection;
 	
+	/**
+	 * _valid
+	 * 
+	 * (default value: false)
+	 * 
+	 * @var bool
+	 * @access private
+	 */
 	private $_valid = false;
+	/**
+	 * _validationErrors
+	 * 
+	 * (default value: array())
+	 * 
+	 * @var array
+	 * @access private
+	 */
 	private $_validationErrors = array();
 	
+	/**
+	 * _databaseName
+	 * 
+	 * @var mixed
+	 * @access protected
+	 */
 	protected $_databaseName;
+	/**
+	 * _collectionName
+	 * 
+	 * @var mixed
+	 * @access protected
+	 */
 	protected $_collectionName;
+	/**
+	 * _typeName
+	 * 
+	 * @var mixed
+	 * @access protected
+	 */
 	protected $_typeName;	
 	
 	
+	/**
+	 * __construct function.
+	 * 
+	 * @access public
+	 * @param array $find (default: array())
+	 * @return void
+	 */
 	public function __construct($find = array())
 	{
 		$this->_find = $find;
@@ -34,6 +152,13 @@ class Documents {
 		$this->get();
 	}
 	
+	/**
+	 * get function.
+	 * 
+	 * @access public
+	 * @param bool $find (default: false)
+	 * @return void
+	 */
 	public function get($find = false)
 	{
 		if($find)
@@ -59,6 +184,13 @@ class Documents {
 		}
 	}
 	
+	/**
+	 * _fixFind function.
+	 * 
+	 * @access private
+	 * @param mixed $find
+	 * @return void
+	 */
 	private function _fixFind($find)
 	{
 		if(isset($find['id']))
@@ -74,17 +206,38 @@ class Documents {
 		return $find;
 	}
 
+	/**
+	 * update function.
+	 * 
+	 * @access public
+	 * @param mixed $data
+	 * @return void
+	 */
 	public function update($data)
 	{
 		$find = $this->_fixFind($this->_find);
 		return $this->_mongo->update($find, $data);
 	}
 	
+	/**
+	 * delete function.
+	 * 
+	 * @access public
+	 * @return void
+	 */
 	public function delete()
 	{
 		return $this->_collection->remove($this->_find);
 	}
 	
+	/**
+	 * validate function.
+	 * 
+	 * @access public
+	 * @param mixed $data
+	 * @param bool $required (default: true)
+	 * @return void
+	 */
 	public function validate($data, $required = true)
 	{
 		$className = $this->_validateClass;
@@ -107,6 +260,12 @@ class Documents {
 		return $this->_valid;
 	}
 	
+	/**
+	 * getErrors function.
+	 * 
+	 * @access public
+	 * @return void
+	 */
 	public function getErrors()
 	{
 		return $this->_validationErrors;

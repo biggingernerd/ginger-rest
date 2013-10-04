@@ -1,4 +1,10 @@
 <?php
+/**
+ * Ginger/Oauth/Token.php
+ * 
+ * @author Big Ginger Nerd
+ * @package Ginger
+ */
 
 namespace Ginger\Oauth;
 
@@ -6,11 +12,36 @@ use \Documents\Oauth\Token as DOT;
 use \Documents\Oauth\Tokens as DOTS;
 use \Documents\Profile\User;
 
+/**
+ * Token class.
+ */
 class Token {
 
+	/**
+	 * _token
+	 * 
+	 * @var mixed
+	 * @access private
+	 * @static
+	 */
 	private static $_token;
+	/**
+	 * _user
+	 * 
+	 * @var mixed
+	 * @access private
+	 * @static
+	 */
 	private static $_user;
 	
+	/**
+	 * isValid function.
+	 * 
+	 * @access public
+	 * @static
+	 * @param bool $token (default: false)
+	 * @return void
+	 */
 	public static function isValid($token = false)
 	{
 		$dot = new DOTS(array("token" => $token, "used" => false));
@@ -23,6 +54,15 @@ class Token {
 		}
 	}
 	
+	/**
+	 * getUser function.
+	 * 
+	 * @access public
+	 * @static
+	 * @param bool $token (default: false)
+	 * @param bool $exception (default: false)
+	 * @return void
+	 */
 	public static function getUser($token = false, $exception = false)
 	{
 		if($token)

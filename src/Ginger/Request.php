@@ -72,11 +72,14 @@ class Request {
 	 */
 	private $_profile = false;
 	
+	private $_data = false;
+	
+	private $_response = null;
 	
 	/**
 	 * Constructor function
 	 */
-	public function __construct($check = true)
+	public function __construct()
 	{
 		Registry::set("Request", $this);
 		
@@ -84,6 +87,7 @@ class Request {
 		$this->_route		=	new Route($this->getUrl()->path);
 		$this->_parameters 	= 	new Parameters($this->_url, $this->_route);
 		$this->_action		= 	$this->getAction();
+		$this->_response 	= 	new Response();
 	}
 	
 	/**
@@ -108,7 +112,7 @@ class Request {
 			throw new \Exception("Not found", 404);
 		}
 		
-		$response = new Response($this);
+		$this->getResponse()->send();
 	}
 	
 	/**
@@ -239,5 +243,20 @@ class Request {
 	public function getExtension()
 	{
 		return ".php";
+	}
+	
+	public function setResponseData($data = array())
+	{
+		$this->_data = $data;
+	}
+	
+	public function getResponseData()
+	{
+		return $this->_data;
+	}
+	
+	public function getResponse()
+	{
+		return $this->_response;
 	}
 }

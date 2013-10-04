@@ -16,38 +16,6 @@ namespace Ginger;
 class Response {
 	
 	/**
-	 * The data object passed from the module file
-	 * @todo This doesn't belong here?
-	 * @var mixed
-	 */
-	public static $data;
-	
-	/**
-	 * Status code to be returned
-	 * 
-	 * @var int
-	 * @todo This doesn't belong here?
-	 */
-	public static $status = 200;
-	
-	/**
-	 * Callback function used for jsonp calls
-	 * 
-	 * @var string
-	 * @todo This doesn't belong here?
-	 */
-	public static $callback;
-	
-	/**
-	 * Action name
-	 *
-	 * @var string
-	 * @todo This doesn't belong here?
-	 */
-	public static $action;
-	
-	
-	/**
 	 * Request object
 	 * 
 	 * @var \Ginger\Request
@@ -89,23 +57,44 @@ class Response {
 	private $_defaultFormat = "json";
 	
 	/**
+	 * _data
+	 * 
+	 * (default value: null)
+	 * 
+	 * @var mixed
+	 * @access private
+	 */
+	private $_data = null;
+	
+	/**
+	 * _status
+	 * 
+	 * (default value: 200)
+	 * 
+	 * @var int
+	 * @access private
+	 */
+	private $_status = 200;
+	
+	/**
+	 * _callback
+	 * 
+	 * (default value: null)
+	 * 
+	 * @var mixed
+	 * @access private
+	 */
+	private $_callback = null;
+	
+	/**
 	 * Constructor. Sets default values and sends data.
 	 * @param \Ginger\Request $request
 	 */
-	public function __construct(\Ginger\Request $request)
+	public function __construct()
 	{
-		$this->_request 	= $request;
-		$this->_format 		= \Ginger\System\Parameters::$format;
 		
-		if(!isset($this->_allowedFormats[$this->_format]))
-		{
-			$this->_format = $this->_defaultFormat;
-		}
-
-		self::$callback = \Ginger\System\Parameters::$callback;
-		
-		$this->send();
-		
+		$this->setCallback();
+		$this->setFormat();
 	}
 	
 	/**
@@ -127,11 +116,11 @@ class Response {
 	 */
 	public function send()
 	{
-		$data = $this->_parseDataToString(self::$data);
+		$data = $this->_parseDataToString($this->_data);
 		$format = $this->_allowedFormats[$this->_format];
 		
 		// Send status header
-		header(self::$status, true, self::$status);
+		header($this->getStatus(), true, $this->getStatus());
 		
 		// Send content type header
 		header("Content-Type: ".$format['mimetype']."; charset=utf-8");
@@ -139,5 +128,109 @@ class Response {
 		echo $data;
 		die();
 	}
+
+	/**
+	 * setFormat function.
+	 * 
+	 * @access public
+	 * @param bool $format (default: false)
+	 * @return void
+	 */
+	public function setFormat($format = false)
+	{
+		if(!$format)
+		{
+			$format = \Ginger\System\Parameters::$format;
+		}
+		$this->_format 		= $format;
+		
+		if(!isset($this->_allowedFormats[$this->_format]))
+		{
+			$this->_format = $this->_defaultFormat;
+		}
+	}
 	
+	/**
+	 * getFormat function.
+	 * 
+	 * @access public
+	 * @return void
+	 */
+	public function getFormat()
+	{
+		return $this->_format;
+	}
+	
+	/**
+	 * setData function.
+	 * 
+	 * @access public
+	 * @param mixed $data
+	 * @return void
+	 */
+	public function setData($data)
+	{
+		$this->_data = $data;
+	}
+	
+	/**
+	 * getData function.
+	 * 
+	 * @access public
+	 * @return void
+	 */
+	public function getData()
+	{
+		return $this->_data;
+	}
+	
+	/**
+	 * setStatus function.
+	 * 
+	 * @access public
+	 * @param mixed $status
+	 * @return void
+	 */
+	public function setStatus($status)
+	{
+		$this->_status = $status;
+	}
+	
+	/**
+	 * getStatus function.
+	 * 
+	 * @access public
+	 * @return void
+	 */
+	public function getStatus()
+	{
+		return $this->_status;
+	}
+	
+	/**
+	 * setCallback function.
+	 * 
+	 * @access public
+	 * @param bool $callback (default: false)
+	 * @return void
+	 */
+	public function setCallback($callback = false)
+	{
+		if(!$callback)
+		{
+			$callback = \Ginger\System\Parameters::$callback;
+		}
+		$this->_callback = $callback;
+	}
+	
+	/**
+	 * getCallback function.
+	 * 
+	 * @access public
+	 * @return void
+	 */
+	public function getCallback()
+	{
+		return $this->_callback;
+	}
 }

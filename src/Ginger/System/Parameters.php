@@ -52,9 +52,17 @@ class Parameters {
 	public static $callback;
 	
 	/**
+	 * @var string $template Template file for html parser (default "null")
+	 */
+	public static $template;
+	
+	/**
 	 * @var string $locale Locale value (default "null")
 	 */
 	public static $locale;
 
+	/**
+	 * @var string $oauth_token Oauth token (default "null")
+	 */
 	public static $oauth_token;
 }

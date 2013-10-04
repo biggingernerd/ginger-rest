@@ -295,3 +295,4 @@ class Request {
 		return $this->_response;
 	}
 }
+

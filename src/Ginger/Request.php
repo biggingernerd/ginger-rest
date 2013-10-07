@@ -112,8 +112,7 @@ class Request {
 	public function go()
 	{
 		// Check if handler file exists
-		if($this->route->getCleanRoute() == "")
-		{
+		if($this->route->getCleanRoute() == "") {
 			$file = $this->getAction().$this->getExtension();
 		} else {
 			$file = $this->route->getCleanRoute()."/".$this->getAction().$this->getExtension();
@@ -121,8 +120,7 @@ class Request {
 		
 		$fullFilePath = stream_resolve_include_path($file);
 		
-		if($fullFilePath)
-		{
+		if($fullFilePath) {
 			include($fullFilePath);	
 		} else {
 			throw new \Exception("Not found", 404);
@@ -188,8 +186,7 @@ class Request {
 	 */
 	public function getMethod()
 	{
-		if(!isset($this->method))
-		{
+		if(!isset($this->method)) {
 			$this->method = $_SERVER['REQUEST_METHOD'];
 		}
 		
@@ -215,37 +212,29 @@ class Request {
 	public function getAction()
 	{
 		$action = "index";
-		switch($_SERVER['REQUEST_METHOD'])
-		{
+		switch($_SERVER['REQUEST_METHOD'])	{
 			case "GET":
-				if(count($this->getParameters()->getFilterParameters()) == 0)
-				{
+				if(count($this->getParameters()->getFilterParameters()) == 0) {
 					$action = "index";
 				} else {
 					$action = "get";
 				}
 				break;
-	
 			case "POST":
 				$action = "post";
 				break;
-	
 			case "PUT":
 				$action = "put";
 				break;
-	
 			case "DELETE":
 				$action = "delete";
 				break;
-	
 			case "HEAD":
 				$action = "head";
 				break;
-	
 			case "OPTIONS":
 				$action = "options";
 				break;
-	
 		}
 	
 		return $action;

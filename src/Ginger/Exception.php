@@ -14,6 +14,7 @@ namespace Ginger;
  * 
  * @package Ginger\Library
  */
-class Exception extends \Exception {
+class Exception extends \Exception 
+{
 	
 }

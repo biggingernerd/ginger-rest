@@ -10,13 +10,13 @@ namespace Ginger\Mongo;
 
 use \Ginger\System\Parameters;
 
-
 /**
  * Ginger Mongo Defaults Handler
  * 
  * @package Ginger\Library
  */
-class Defaults {
+class Defaults 
+{
 	/**
 	 * @var int $limit Max returned results
 	 */

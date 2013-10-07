@@ -16,55 +16,56 @@ use \Ginger\Mongo\Defaults;
  * 
  * @package Ginger\Library
  */
-class Mongo {
+class Mongo 
+{
 	/**
-	 * @var \MongoClient $_client MongoClient
+	 * @var \MongoClient $client MongoClient
 	 */
-	private $_client;
+	private $client;
 	
 	/**
-	 * @var int $_limit Limit used in queries
+	 * @var int $limit Limit used in queries
 	 */
-	private $_limit;
+	private $limit;
 	/**
-	 * @var int $_offset Offset used in queries
+	 * @var int $offset Offset used in queries
 	 */
-	private $_offset;
+	private $offset;
 	
 	/**
-	 * @var string $_sort Sort field used in queries
+	 * @var string $sort Sort field used in queries
 	 */
-	private $_sort;
+	private $sort;
 	
 	/**
-	 * @var string $_direction Sort direction used in queries
+	 * @var string $direction Sort direction used in queries
 	 */
-	private $_direction;
+	private $direction;
 	
 	/**
-	 * @var array $_fields Fields returned from query
+	 * @var array $fields Fields returned from query
 	 */
-	private $_fields;
+	private $fields;
 	
 	/**
-	 * @var string $_databaseName Database name used
+	 * @var string $databaseName Database name used
 	 */
-	private $_databaseName;
+	private $databaseName;
 	
 	/**
-	 * @var string $_collectionName Collection name used
+	 * @var string $collectionName Collection name used
 	 */
-	private $_collectionName;
+	private $collectionName;
 	/**
-	 * @var \MongoCollection $_collection Collection
+	 * @var \MongoCollection $collection Collection
 	 */
-	private $_collection;
+	private $collection;
 	
 	/**
 	 * Results found
-	 * @var int $_total Total results found
+	 * @var int $total Total results found
 	 */
-	private $_total = 0;
+	private $total = 0;
 	
 	/**
 	 * Set defaults and connect to the server
@@ -84,7 +85,7 @@ class Mongo {
 		$this->setSort($defaults->sort);
 		$this->setDirection($defaults->direction);
 		
-		$this->_client = new \MongoClient();
+		$this->client = new \MongoClient();
 		$this->setCollection();
 	}
 	
@@ -95,14 +96,12 @@ class Mongo {
 	 * @param array $find
 	 * @return MongoCursor
 	 */
-	public function find($find = null) {
-		if(isset($find['id']))
-		{
-			if(is_array($find['id']))
-			{
+	public function find($find = null) 
+	{
+		if(isset($find['id'])) {
+			if(is_array($find['id'])) {
 				$find['_id']['$in'] = array();
-				foreach($find['id'] as $id)
-				{
+				foreach($find['id'] as $id) {
 					$find['_id']['$in'][] = new \MongoId($id);
 				}
 			} else {
@@ -116,6 +115,7 @@ class Mongo {
 		$cursor->sort(array($this->getSort() => $this->getMongoDirection()));
 		
 		$this->setTotal($cursor->count());
+		
 		return $cursor;
 	}
 	
@@ -134,7 +134,7 @@ class Mongo {
 	 */
 	public function insert($data) 
 	{
-		$this->getCollection()->insert($this->_getSafeVars($data));
+		$this->getCollection()->insert($this->getSafeVars($data));
 	}
 	
 	/**
@@ -144,7 +144,7 @@ class Mongo {
 	 */
 	public function update($find = array(), $data) 
 	{
-		return $this->getCollection()->update($find, array('$set' => $this->_getSafeVars($data)), array("multiple" => true));	
+		return $this->getCollection()->update($find, array('$set' => $this->getSafeVars($data)), array("multiple" => true));	
 	}
 	
 	/**
@@ -155,7 +155,7 @@ class Mongo {
 	 */
 	public function upsert($find = array(), $data) 
 	{
-		return $this->getCollection()->update($find, $this->_getSafeVars($data), array("upsert" => true));
+		return $this->getCollection()->update($find, $this->getSafeVars($data), array("upsert" => true));
 	}
 	
 	/**
@@ -164,8 +164,7 @@ class Mongo {
 	 */
 	public function remove($find)
 	{
-		if(count($find) > 0)
-		{
+		if(count($find) > 0) {
 			return $this->getCollection()->remove($find);
 		} else {
 			return array("n" => 0);
@@ -177,10 +176,9 @@ class Mongo {
 	 * @param mixed $data
 	 * @return multitype:
 	 */
-	private function _getSafeVars($data)
+	private function getSafeVars($data)
 	{
-		if(is_object($data))
-		{
+		if(is_object($data)) {
 			$data = get_object_vars($data);
 		}
 		
@@ -193,7 +191,7 @@ class Mongo {
 	 */
 	public function setLimit($limit) 
 	{
-		$this->_limit = (int)$limit;
+		$this->limit = (int)$limit;
 	}
 	/**
 	 * Get limit
@@ -201,7 +199,7 @@ class Mongo {
 	 */
 	public function getLimit() 
 	{
-		return $this->_limit;
+		return $this->limit;
 	}
 	/**
 	 * Set offset
@@ -210,7 +208,7 @@ class Mongo {
 	 */
 	public function setOffset($offset) 
 	{
-		$this->_offset = (int)$offset;
+		$this->offset = (int)$offset;
 	}
 	/**
 	 * Get offset
@@ -218,7 +216,7 @@ class Mongo {
 	 */
 	public function getOffset() 
 	{
-		return $this->_offset;
+		return $this->offset;
 	}
 	/**
 	 * Get sort
@@ -226,7 +224,7 @@ class Mongo {
 	 */
 	public function getSort() 
 	{
-		return $this->_sort;
+		return $this->sort;
 	}
 	/**
 	 * Set sort
@@ -234,7 +232,7 @@ class Mongo {
 	 */
 	public function setSort($sort) 
 	{
-		$this->_sort = $sort;
+		$this->sort = $sort;
 	}
 	
 	/**
@@ -245,8 +243,7 @@ class Mongo {
 	 */
 	public function getMongoDirection()
 	{
-		if($this->_direction == "asc")
-		{
+		if($this->direction == "asc") {
 			return 1;
 		} else {
 			return -1;
@@ -259,7 +256,7 @@ class Mongo {
 	 */
 	public function getDirection() 
 	{
-		return $this->_direction;
+		return $this->direction;
 	}
 	/**
 	 * Set direction
@@ -267,7 +264,7 @@ class Mongo {
 	 */
 	public function setDirection($direction) 
 	{
-		$this->_direction = $direction;
+		$this->direction = $direction;
 	}
 	
 	/**
@@ -276,7 +273,7 @@ class Mongo {
 	 */
 	public function setFields($fields = array()) 
 	{
-		$this->_fields = $fields;
+		$this->fields = $fields;
 	}
 	
 	/**
@@ -285,7 +282,7 @@ class Mongo {
 	 */
 	public function getFields() 
 	{
-		return $this->_fields;
+		return $this->fields;
 	}
 
 	/**
@@ -294,7 +291,7 @@ class Mongo {
 	 */
 	public function setTotal($total) 
 	{
-		$this->_total = (int)$total;
+		$this->total = (int)$total;
 	}
 	
 	/**
@@ -304,7 +301,7 @@ class Mongo {
 	 */
 	public function getTotal()
 	{
-		return $this->_total;
+		return $this->total;
 	}
 	
 	/**
@@ -313,7 +310,7 @@ class Mongo {
 	 */
 	public function setDatabaseName($databaseName)
 	{
-		$this->_databaseName = $databaseName;
+		$this->databaseName = $databaseName;
 	}
 	/**
 	 * Set collection name
@@ -321,7 +318,7 @@ class Mongo {
 	 */
 	public function setCollectionName($collectionName)
 	{
-		$this->_collectionName = $collectionName;
+		$this->collectionName = $collectionName;
 	}
 	
 	/**
@@ -330,7 +327,7 @@ class Mongo {
 	 */
 	public function getClient()
 	{
-		return $this->_client;
+		return $this->client;
 	}
 	
 	/**
@@ -338,7 +335,7 @@ class Mongo {
 	 */
 	public function setCollection()
 	{
-		$this->_collection = $this->_client->{$this->_databaseName}->{$this->_collectionName};
+		$this->collection = $this->client->{$this->databaseName}->{$this->collectionName};
 	}
 	
 	/**
@@ -347,6 +344,6 @@ class Mongo {
 	 */
 	public function getCollection()
 	{
-		return $this->_collection;
+		return $this->collection;
 	}
 }

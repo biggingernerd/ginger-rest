@@ -8,7 +8,6 @@
 
 namespace Ginger;
 
-
 /**
  * Ginger Registry Handler
  * 
@@ -79,8 +78,7 @@ class Registry
 	 */
 	public static function init()
 	{
-		if(!isset($GLOBALS[self::$namespace]))
-		{
+		if(!isset($GLOBALS[self::$namespace])) {
 			$GLOBALS[self::$namespace] = array();
 		}	
 	}

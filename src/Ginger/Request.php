@@ -20,91 +20,91 @@ use \Ginger\Response;
  * @package Ginger\Library
  */
 class Request {
+    	
+    /**
+     * Contains the parameters object
+     * 
+     * @var \Ginger\Request\Parameters
+     */
+    private $parameters;
+    
+    /**
+     * Contains the current URL object
+     * 
+     * @var \Ginger\Request\Url
+     */
+    private $url;
+    
+    /**
+     * @var \Ginger\Request\Route $route Route object
+     */
+    private $route;
+    
+    /**
+     * @var string $method Request Method
+     */
+    private $method;
+    
+    /**
+     * @var string $action Action
+     */
+    private $action;
+    
+    
+    /**
+     * access
+     * 
+     * (default value: false)
+     * 
+     * @var bool
+     * @access private
+     */
+    private $access = false;
+    
+    
+    /**
+     * profile
+     * 
+     * (default value: false)
+     * 
+     * @var array
+     * @access private
+     */
+    private $profile = false;
+    
+    /**
+     * data
+     * 
+     * (default value: false)
+     * 
+     * @var bool
+     * @access private
+     */
+    private $data = false;
 	
-	/**
-	 * Contains the parameters object
-	 * 
-	 * @var \Ginger\Request\Parameters
-	 */
-	private $_parameters;
+    /**
+     * response
+     * 
+     * (default value: null)
+     * 
+     * @var mixed
+     * @access private
+     */
+    private $response = null;
 	
-	/**
-	 * Contains the current URL object
-	 * 
-	 * @var \Ginger\Request\Url
-	 */
-	private $_url;
-	
-	/**
-	 * @var \Ginger\Request\Route $_route Route object
-	 */
-	private $_route;
-	
-	/**
-	 * @var string $_method Request Method
-	 */
-	private $_method;
-	
-	/**
-	 * @var string $_action Action
-	 */
-	private $_action;
-	
-	
-	/**
-	 * _access
-	 * 
-	 * (default value: false)
-	 * 
-	 * @var bool
-	 * @access private
-	 */
-	private $_access = false;
-	
-	
-	/**
-	 * _profile
-	 * 
-	 * (default value: false)
-	 * 
-	 * @var array
-	 * @access private
-	 */
-	private $_profile = false;
-	
-	/**
-	 * _data
-	 * 
-	 * (default value: false)
-	 * 
-	 * @var bool
-	 * @access private
-	 */
-	private $_data = false;
-	
-	/**
-	 * _response
-	 * 
-	 * (default value: null)
-	 * 
-	 * @var mixed
-	 * @access private
-	 */
-	private $_response = null;
-	
-	/**
-	 * Constructor function
-	 */
-	public function __construct()
-	{
-		Registry::set("Request", $this);
-		
-		$this->_url 		= 	new Url();
-		$this->_route		=	new Route($this->getUrl()->path);
-		$this->_parameters 	= 	new Parameters($this->_url, $this->_route);
-		$this->_action		= 	$this->getAction();
-		$this->_response 	= 	new Response();
-	}
+    /**
+     * Constructor function
+     */
+    public function __construct()
+    {
+        Registry::set("Request", $this);
+        
+        $this->url 		    = new Url();
+        $this->route        = new Route($this->getUrl()->path);
+        $this->parameters   = new Parameters($this->url, $this->route);
+        $this->action       = $this->getAction();
+        $this->response     = new Response();
+    }
 	
 	/**
 	 * Load file and dispatch to response
@@ -112,11 +112,11 @@ class Request {
 	public function go()
 	{
 		// Check if handler file exists
-		if($this->_route->getCleanRoute() == "")
+		if($this->route->getCleanRoute() == "")
 		{
 			$file = $this->getAction().$this->getExtension();
 		} else {
-			$file = $this->_route->getCleanRoute()."/".$this->getAction().$this->getExtension();
+			$file = $this->route->getCleanRoute()."/".$this->getAction().$this->getExtension();
 		}
 		
 		$fullFilePath = stream_resolve_include_path($file);
@@ -138,7 +138,7 @@ class Request {
 	 */
 	public function getParameters()
 	{
-		return $this->_parameters;
+		return $this->parameters;
 	}
 	
 	/**
@@ -148,7 +148,7 @@ class Request {
 	 */
 	public function getFilterParameters()
 	{
-		return $this->_parameters->getFilterParameters();
+		return $this->parameters->getFilterParameters();
 	}
 	
 	/**
@@ -158,7 +158,7 @@ class Request {
 	 */
 	public function getDataParameters()
 	{
-		return $this->_parameters->getDataParameters();
+		return $this->parameters->getDataParameters();
 	}
 	
 	/**
@@ -168,7 +168,7 @@ class Request {
 	 */
 	public function getRoute()
 	{
-		return $this->_route;
+			return $this->route;
 	}
 	
 	/**
@@ -178,7 +178,7 @@ class Request {
 	 */
 	public function getUrl()
 	{
-		return $this->_url;
+		return $this->url;
 	}
 	
 	/**
@@ -188,12 +188,12 @@ class Request {
 	 */
 	public function getMethod()
 	{
-		if(!isset($this->_method))
+		if(!isset($this->method))
 		{
-			$this->_method = $_SERVER['REQUEST_METHOD'];
+			$this->method = $_SERVER['REQUEST_METHOD'];
 		}
 		
-		return $this->_method;
+		return $this->method;
 	}
 	
 	/**
@@ -204,7 +204,7 @@ class Request {
 	 */
 	public function getProfile()
 	{
-		return $this->_profile;
+		return $this->profile;
 	}
 	
 	/**
@@ -270,7 +270,7 @@ class Request {
 	 */
 	public function setResponseData($data = array())
 	{
-		$this->_data = $data;
+		$this->data = $data;
 	}
 	
 	/**
@@ -281,7 +281,7 @@ class Request {
 	 */
 	public function getResponseData()
 	{
-		return $this->_data;
+		return $this->data;
 	}
 	
 	/**
@@ -292,6 +292,6 @@ class Request {
 	 */
 	public function getResponse()
 	{
-		return $this->_response;
+		return $this->response;
 	}
 }

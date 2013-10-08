@@ -202,7 +202,9 @@ class Parameters {
 			"_direction"     => "direction",
 			"_debug"         => "debug",
 			"_locale"        => "locale",
+			"_mode"          => "mode",
 			"_template"		 =>	"template",
+			"_flags"         => "flags",
 			"oauth_token"    => "oauth_token",
 			"callback"       => "callback"
 		);

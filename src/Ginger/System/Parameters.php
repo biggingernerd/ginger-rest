@@ -65,4 +65,23 @@ class Parameters {
 	 * @var string $oauth_token Oauth token (default "null")
 	 */
 	public static $oauth_token;
+	
+	/**
+	 * flags
+	 * 
+	 * @var mixed
+	 * @access public
+	 * @static
+	 */
+	public static $flags;
+	
+	/**
+	 * mode
+	 * 
+	 * @var mixed
+	 * @access public
+	 * @static
+	 */
+	public static $mode;
+	
 }

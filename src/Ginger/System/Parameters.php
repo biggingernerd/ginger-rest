@@ -84,4 +84,13 @@ class Parameters {
 	 */
 	public static $mode;
 	
+	/**
+	 * options
+	 * 
+	 * @var mixed
+	 * @access public
+	 * @static
+	 */
+	public static $options;
+	
 }

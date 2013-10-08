@@ -201,6 +201,7 @@ class Parameters {
 			"_sort"          => "sort",
 			"_direction"     => "direction",
 			"_debug"         => "debug",
+			"_options"       => "options",
 			"_locale"        => "locale",
 			"_mode"          => "mode",
 			"_template"		 =>	"template",

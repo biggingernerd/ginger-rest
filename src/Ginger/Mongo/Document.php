@@ -202,9 +202,9 @@ class Document
 	 */
 	public function save()
 	{
-		if(method_exists($this, "_preSave"))
+		if(method_exists($this, "preSave"))
 		{
-			$this->_preSave();
+			$this->preSave();
 		}
 	
 		$this->_id = $this->_mongoId;

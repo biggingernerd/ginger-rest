@@ -222,6 +222,14 @@ class Parameters {
 			unset($this->dataParameters["oauth_token"]);
 		}
 		
+		// Make auth header leading
+		if(isset($_SERVER['HTTP_AUTHORIZATION'])) {
+    		$check_for = "oauth_token";
+    		if(substr($_SERVER['HTTP_AUTHORIZATION'], 0, strlen($check_for)) == $check_for) {
+        		\Ginger\System\Parameters::$oauth_token = trim(substr($_SERVER['HTTP_AUTHORIZATION'], strlen($check_for)));
+    		} 
+		}
+		
 		// Check for X-NI-API-Key
 		if(isset($_SERVER['HTTP_X_NI_API_KEY'])) {
     		\Ginger\System\Parameters::$api_key = $_SERVER['HTTP_X_NI_API_KEY'];

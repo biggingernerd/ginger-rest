@@ -101,5 +101,13 @@ class Parameters {
 	 * @static
 	 */
 	public static $options;
-	
+
+    /**
+     * ip
+     * 
+     * @var mixed
+     * @access public
+     * @static
+     */
+    public static $ip;	
 }

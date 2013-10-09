@@ -227,6 +227,10 @@ class Parameters {
     		\Ginger\System\Parameters::$api_key = $_SERVER['HTTP_X_NI_API_KEY'];
 		}
 		
+		// Check for existing IP Address
+		if(isset($_SERVER['REMOTE_ADDR'])) {
+    		\Ginger\System\Parameters::$ip = $_SERVER['REMOTE_ADDR'];
+		}
 	}
 
 	/**

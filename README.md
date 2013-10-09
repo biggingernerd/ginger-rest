@@ -12,12 +12,8 @@ Todo:
 - Add unit tests (sorry @grmpyprogrammer)
 - Add documentation
 
-An example implementation:
-https://github.com/biggingernerd/ginger-example
 
 Support
 =======
 
 irc.freenode.net \#gingerrest
-
-http://biggingernerd.github.io/ginger-rest/

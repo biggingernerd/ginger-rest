@@ -67,6 +67,15 @@ class Parameters {
 	public static $oauth_token;
 	
 	/**
+	 * api_key
+	 * 
+	 * @var mixed
+	 * @access public
+	 * @static
+	 */
+	public static $api_key;
+	
+	/**
 	 * flags
 	 * 
 	 * @var mixed

@@ -210,21 +210,22 @@ class Parameters {
 			"callback"       => "callback"
 		);
 		
-		foreach($params as $param => $paramKey)
-		{
-			if(isset($this->filterParameters[$param]))
-			{
+		foreach($params as $param => $paramKey) {
+			if(isset($this->filterParameters[$param])) {
 				\Ginger\System\Parameters::$$paramKey = $this->filterParameters[$param];
 				unset($this->filterParameters[$param]);
 			}
 		}
 		
-		if(isset($this->dataParameters["oauth_token"]))
-		{
+		if(isset($this->dataParameters["oauth_token"])) {
 			\Ginger\System\Parameters::$oauth_token = $this->dataParameters["oauth_token"];
 			unset($this->dataParameters["oauth_token"]);
 		}
 		
+		// Check for X-NI-API-Key
+		if(isset($_SERVER['HTTP_X_NI_API_KEY'])) {
+    		\Ginger\System\Parameters::$api_key = $_SERVER['HTTP_X_NI_API_KEY'];
+		}
 		
 	}
 

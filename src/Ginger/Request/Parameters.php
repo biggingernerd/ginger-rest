@@ -231,8 +231,8 @@ class Parameters {
 		}
 		
 		// Check for X-NI-API-Key
-		if(isset($_SERVER['HTTP_X_NI_API_KEY'])) {
-    		\Ginger\System\Parameters::$api_key = $_SERVER['HTTP_X_NI_API_KEY'];
+		if(isset($_SERVER['HTTP_X_API_KEY'])) {
+    		\Ginger\System\Parameters::$api_key = $_SERVER['HTTP_X_API_KEY'];
 		}
 		
 		// Check for existing IP Address

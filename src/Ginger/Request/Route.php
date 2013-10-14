@@ -13,7 +13,8 @@ namespace Ginger\Request;
  * 
  * @package Ginger\Library
  */
-class Route {
+class Route 
+{
 	
 	/**
 	 * @var string $_route String representation of current route
@@ -38,8 +39,7 @@ class Route {
 		$totalLength = strlen($path);
 		
 		$found = null;
-		for($i=0;$i<$amountRoutes;$i++)
-		{
+		for($i=0;$i<$amountRoutes;$i++) {
 			$route = $routes[$i];
 			
 			$currentLength = strlen($routes[$i]);
@@ -48,15 +48,13 @@ class Route {
 			} elseif(substr($path, 0, $currentLength+1) == $routes[$i]."/") {
 				$this->_route = $routes[$i];
 			}
-			if($this->_route)
-			{
+			if($this->_route) {
 				$this->getCleanRoute();
 				break;
 			}
 		}	
 		
-		if(!$this->_route)
-		{
+		if(!$this->_route) {
 			$this->_route = "/error/notfound";
 		}
 	}

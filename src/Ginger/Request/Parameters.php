@@ -137,25 +137,19 @@ class Parameters {
 	{
 		$params = $this->dataParameters;
 		
-		foreach($params as $key => $input)
-		{
-			if(strpos($input, "|"))
-			{
+		foreach($params as $key => $input) {
+		    
+			if(substr($input, 0, 1) == '"' && substr($input, -1) == '"') {
+			    $input = substr($input, 1, -1);
+            } elseif(strpos($input, "|")) {
 				$input = explode("|", $input);
-			}
-			if($input == "false")
-			{
+			} elseif($input == "false") {
 				$input = false;
-			}
-			if($input == "true")
-			{
+			} elseif($input == "true") {
 				$input = true;
-			}
-			if(is_numeric($input))
-			{
+			} elseif(is_numeric($input)) {
 				$input = (float)$input;
-				if(!strpos($input, "."))
-				{
+				if(!strpos($input, ".")) {
 					$input = (int)$input;
 				}
 			}

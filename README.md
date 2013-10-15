@@ -8,9 +8,7 @@ Install via composer (add to require)
 
 There is a sample implementation available at https://github.com/newestindustry/ginger-example
 
-Todo:
-- Add unit tests (sorry @grmpyprogrammer)
-- Add documentation
+
 
 
 Support

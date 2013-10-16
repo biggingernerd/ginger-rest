@@ -38,6 +38,14 @@ class Response {
 	private $filters;
 	
 	/**
+	 * action
+	 * 
+	 * @var mixed
+	 * @access private
+	 */
+	private $action;
+	
+	/**
 	 * All allowed formats + classes and mimetypes
 	 * @var array
 	 */
@@ -246,6 +254,16 @@ class Response {
 	{
     	return $this->filters;
 	}
+
+    public function setAction($action)
+    {
+        $this->action = $action;
+    }
+    
+    public function getAction()
+    {
+        return $this->action;
+    }
 	
 	/**
 	 * getCallback function.

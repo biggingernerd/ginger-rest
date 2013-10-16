@@ -105,6 +105,7 @@ class Request {
         $this->action       = $this->getAction();
         $this->response     = new Response();
         $this->response->setFilters($this->getFilterParameters());
+        $this->response->setAction($this->action);
     }
 	
 	/**

@@ -64,7 +64,7 @@ class Response {
 	 * @var mixed
 	 * @access private
 	 */
-	private $_data = null;
+	private $_data = array("response" => "");
 	
 	/**
 	 * _status
@@ -125,7 +125,8 @@ class Response {
 		// Send content type header
 		header("Content-Type: ".$format['mimetype']."; charset=utf-8");
 		
-		echo $data;
+    	echo $data;	
+		
 		die();
 	}
 

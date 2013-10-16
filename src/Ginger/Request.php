@@ -123,7 +123,7 @@ class Request {
 		if($fullFilePath) {
 			include($fullFilePath);	
 		} else {
-			throw new \Exception("Not found", 404);
+			throw new \Ginger\Exception("Not implemented", 501);
 		}
 		
 		$this->getResponse()->send();

@@ -104,6 +104,7 @@ class Request {
         $this->parameters   = new Parameters($this->url, $this->route);
         $this->action       = $this->getAction();
         $this->response     = new Response();
+        $this->response->setFilters($this->getFilterParameters());
     }
 	
 	/**

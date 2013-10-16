@@ -28,6 +28,15 @@ class Response {
 	 */
 	private $_format;
 	
+	
+	/**
+	 * filters
+	 * 
+	 * @var mixed
+	 * @access private
+	 */
+	private $filters;
+	
 	/**
 	 * All allowed formats + classes and mimetypes
 	 * @var array
@@ -226,6 +235,16 @@ class Response {
 			$callback = \Ginger\System\Parameters::$callback;
 		}
 		$this->_callback = $callback;
+	}
+	
+	public function setFilters($filters)
+	{
+    	$this->filters = $filters;
+	}
+	
+	public function getFilters()
+	{
+    	return $this->filters;
 	}
 	
 	/**

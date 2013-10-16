@@ -19,7 +19,8 @@ class Exception extends \Exception
 {
 	public function __construct($message, $code)
 	{
-    	$response = new Response();
+	    $request = new Request();
+	    $response = $request->getResponse();
     	$response->setStatus($code);
     	$response->setData(array("error" => $message));
     	$response->send();

@@ -66,8 +66,6 @@ class Document
 	 * @access private
 	 */
 	private $_found = false;
-	
-	private $plainId = false;
 	/**
 	 * __construct function.
 	 * 
@@ -75,9 +73,8 @@ class Document
 	 * @param bool $data (default: false)
 	 * @return void
 	 */
-	public function __construct($data = false, $plainId = false)
+	public function __construct($data = false)
 	{
-	    $this->plainId = $plainId;
 		$this->_className = get_class($this);
 		$this->_mongo = new \Ginger\Mongo($this->_databaseName, $this->_collectionName);
 		$this->_collection = $this->_mongo->getCollection();
@@ -138,12 +135,7 @@ class Document
 		{
 			$this->id = $id;
 			try {
-			    if(!$this->plainId) {
-    			    $this->_mongoId = new \MongoId($id);    
-			    } else {
-    			    $this->_mongoId = (string)$id;
-			    }
-				
+				$this->_mongoId = new \MongoId($id);
 			} catch(\MongoException $e) {
 				$this->_mongoId = (string)$id;
 			}

@@ -134,7 +134,7 @@ class Documents {
 	 */
 	protected $_typeName;	
 	
-	private $plainId = false
+	private $plainId = false;
 	
 	/**
 	 * __construct function.
@@ -147,8 +147,8 @@ class Documents {
 	{
 		$this->_find = $find;
 		
-		$this->plainId = $plainId;
-		
+		$this->plainId = (string)$plainId;
+
 		$this->_mongo = new \Ginger\Mongo($this->_databaseName, $this->_collectionName);
 		$this->_collection = $this->_mongo->getCollection();
 		
@@ -172,7 +172,7 @@ class Documents {
 		$find = $this->_find;
 		
 		$find = $this->_fixFind($find);
-		
+
 		$cursor = $this->_mongo->find($find);
 		$this->total = $cursor->count();
 		$this->limit = $this->_mongo->getLimit();
@@ -196,14 +196,16 @@ class Documents {
 	 */
 	private function _fixFind($find)
 	{
-		if(isset($find['id']) && !$this->plainId)
-		{
+		if(isset($find['id']) && !$this->plainId) {
 			try {
 				$find['_id'] = new \MongoId($find['id']);	
 			} catch(\MongoException $e) {
 				$find['_id'] = $find['id'];
 			}
 			unset($find['id']);
+		} elseif(isset($find['id'])) {
+    		$find['_id'] = (string)$find['id'];
+    		unset($find['id']);
 		}
 		
 		return $find;

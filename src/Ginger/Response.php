@@ -46,6 +46,14 @@ class Response {
 	private $action;
 	
 	/**
+	 * request
+	 * 
+	 * @var mixed
+	 * @access private
+	 */
+	private $request;
+	
+	/**
 	 * All allowed formats + classes and mimetypes
 	 * @var array
 	 */
@@ -245,24 +253,24 @@ class Response {
 		$this->_callback = $callback;
 	}
 	
-	public function setFilters($filters)
-	{
-    	$this->filters = $filters;
-	}
-	
 	public function getFilters()
 	{
-    	return $this->filters;
+    	return $this->request->getFilterParameters();
 	}
 
-    public function setAction($action)
-    {
-        $this->action = $action;
-    }
-    
     public function getAction()
     {
-        return $this->action;
+        return $this->request->getAction();
+    }
+    
+    public function setRequest($request)
+    {
+        $this->request = $request;
+    }
+    
+    public function getRequest()
+    {
+        return $this->request;
     }
 	
 	/**

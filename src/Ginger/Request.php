@@ -104,8 +104,7 @@ class Request {
         $this->parameters   = new Parameters($this->url, $this->route);
         $this->action       = $this->getAction();
         $this->response     = new Response();
-        $this->response->setFilters($this->getFilterParameters());
-        $this->response->setAction($this->action);
+        $this->response->setRequest($this);
     }
 	
 	/**
@@ -213,33 +212,39 @@ class Request {
 	 */
 	public function getAction()
 	{
-		$action = "index";
-		switch($_SERVER['REQUEST_METHOD'])	{
-			case "GET":
-				if(count($this->getParameters()->getFilterParameters()) == 0) {
-					$action = "index";
-				} else {
-					$action = "get";
-				}
-				break;
-			case "POST":
-				$action = "post";
-				break;
-			case "PUT":
-				$action = "put";
-				break;
-			case "DELETE":
-				$action = "delete";
-				break;
-			case "HEAD":
-				$action = "head";
-				break;
-			case "OPTIONS":
-				$action = "options";
-				break;
-		}
-	
-		return $action;
+	    if($this->action) {
+    	    return $this->action;
+	    } else {
+    	    $action = "index";
+        		switch($_SERVER['REQUEST_METHOD'])	{
+        			case "GET":
+        				if(count($this->getParameters()->getFilterParameters()) == 0) {
+        					$action = "index";
+        				} else {
+        					$action = "get";
+        				}
+        				break;
+        			case "POST":
+        				$action = "post";
+        				break;
+        			case "PUT":
+        				$action = "put";
+        				break;
+        			case "DELETE":
+        				$action = "delete";
+        				break;
+        			case "HEAD":
+        				$action = "head";
+        				break;
+        			case "OPTIONS":
+        				$action = "options";
+        				break;
+        		}
+        	
+        		return $action;
+	    }
+	    
+		
 	}
 	
 	/**

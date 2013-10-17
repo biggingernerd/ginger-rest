@@ -134,6 +134,7 @@ class Documents {
 	 */
 	protected $_typeName;	
 	
+	private $plainId = false
 	
 	/**
 	 * __construct function.
@@ -142,9 +143,11 @@ class Documents {
 	 * @param array $find (default: array())
 	 * @return void
 	 */
-	public function __construct($find = array())
+	public function __construct($find = array(), $plainId = false)
 	{
 		$this->_find = $find;
+		
+		$this->plainId = $plainId;
 		
 		$this->_mongo = new \Ginger\Mongo($this->_databaseName, $this->_collectionName);
 		$this->_collection = $this->_mongo->getCollection();
@@ -193,7 +196,7 @@ class Documents {
 	 */
 	private function _fixFind($find)
 	{
-		if(isset($find['id']))
+		if(isset($find['id']) && !$this->plainId)
 		{
 			try {
 				$find['_id'] = new \MongoId($find['id']);	

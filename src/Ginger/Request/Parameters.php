@@ -117,6 +117,8 @@ class Parameters {
 				if(!strpos($input, ".")) {
 					$input = (int)$input;
 				}
+			} elseif($input == "on") {
+    			$input = true;
 			}
 			
 			$this->filterParameters[$key] = $input;
@@ -145,6 +147,8 @@ class Parameters {
 				if(!strpos($input, ".")) {
 					$input = (int)$input;
 				}
+			} elseif($input == "on") {
+    			$input = true;
 			}
 			
 			$this->dataParameters[$key] = $input;

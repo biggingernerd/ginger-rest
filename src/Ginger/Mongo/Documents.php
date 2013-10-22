@@ -147,7 +147,9 @@ class Documents {
 	{
 		$this->_find = $find;
 		
-		$this->plainId = (string)$plainId;
+		if($plainId) {
+    		$this->plainId = (string)$plainId;
+		}
 
 		$this->_mongo = new \Ginger\Mongo($this->_databaseName, $this->_collectionName);
 		$this->_collection = $this->_mongo->getCollection();
@@ -233,7 +235,7 @@ class Documents {
 	public function delete()
 	{
 	    $find = $this->_fixFind($this->_find);
-		return $this->_collection->remove($this->_find);
+		return $this->_collection->remove($find);
 	}
 	
 	/**

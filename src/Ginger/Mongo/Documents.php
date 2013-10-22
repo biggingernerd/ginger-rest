@@ -232,6 +232,7 @@ class Documents {
 	 */
 	public function delete()
 	{
+	    $find = $this->_fixFind($this->_find);
 		return $this->_collection->remove($this->_find);
 	}
 	

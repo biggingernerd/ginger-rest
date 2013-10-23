@@ -111,6 +111,8 @@ class Response {
 	 */
 	private $_callback = null;
 	
+	private static $headers = array();
+	
 	/**
 	 * Constructor. Sets default values and sends data.
 	 * @param \Ginger\Request $request
@@ -147,8 +149,14 @@ class Response {
 		// Send status header
 		header($this->getStatus(), true, $this->getStatus());
 		
+		foreach(self::$headers as $key => $value) {
+    		header($key.": ".$value);
+		}
+		
 		// Send content type header
 		header("Content-Type: ".$format['mimetype']."; charset=utf-8");
+		
+		
 		
 		if(function_exists("ginger_log")) {
     		ginger_log($this);
@@ -272,6 +280,23 @@ class Response {
     {
         return $this->request;
     }
+	
+	public static function addHeader($key, $value)
+	{
+    	self::$headers[$key] = $value;
+	}
+	
+	public static function removeHeader($key)
+	{
+    	if(isset(self::$headers[$key])) {
+        	unset(self::$headers[$key]);
+    	}
+	}
+	
+	public static function getHeaders()
+	{
+    	return self::$headers;
+	}
 	
 	/**
 	 * getCallback function.

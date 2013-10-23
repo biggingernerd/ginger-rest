@@ -110,4 +110,13 @@ class Parameters {
      * @static
      */
     public static $ip;	
+    
+    /**
+     * ts
+     * 
+     * @var mixed
+     * @access public
+     * @static
+     */
+    public static $ts;
 }

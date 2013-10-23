@@ -197,6 +197,7 @@ class Parameters {
 			"_mode"          => "mode",
 			"_template"		 =>	"template",
 			"_flags"         => "flags",
+			"_ts"            => "ts",
 			"oauth_token"    => "oauth_token",
 			"callback"       => "callback"
 		);

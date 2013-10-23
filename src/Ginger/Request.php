@@ -112,13 +112,17 @@ class Request {
 	 */
 	public function go()
 	{
-		// Check if handler file exists
-		if($this->route->getCleanRoute() == "") {
-			$file = $this->getAction().$this->getExtension();
-		} else {
-			$file = $this->route->getCleanRoute()."/".$this->getAction().$this->getExtension();
-		}
-		
+	    if($this->action == "options") {
+    	    $file == "options".$this->getExtension();
+	    } else {
+    	    // Check if handler file exists
+    		if($this->route->getCleanRoute() == "") {
+    			$file = $this->getAction().$this->getExtension();
+    		} else {
+    			$file = $this->route->getCleanRoute()."/".$this->getAction().$this->getExtension();
+    		}    
+	    }
+	    
 		$fullFilePath = stream_resolve_include_path($file);
 		
 		if($fullFilePath) {

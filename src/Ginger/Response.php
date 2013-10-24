@@ -72,6 +72,10 @@ class Response {
 									 "phps"	=> array(
 													"class" => "Phps",
 													"mimetype" => "text/plain"
+												),
+									 "html"	=> array(
+													"class" => "Html",
+													"mimetype" => "text/html"
 												)
 									 );
 	

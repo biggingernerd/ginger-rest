@@ -157,6 +157,32 @@ class Parameters {
 	}
 	
 	
+	public function getPostFromInput() {
+	    $ct = $_SERVER['CONTENT_TYPE'];
+	    $position = stripos($ct, "multipart/form-data;");
+	    
+	    $input = file_get_contents("php://input");
+	    $postVars = array();
+	    if($position !== false) {
+	    
+    	    $exp = explode("boundary=", $ct);
+    	    if(isset($exp[1])) {
+        	    $boundary = trim($exp[1]); 
+        	    $variables = explode("--".$boundary, $input);
+        	    foreach($variables as $var) {
+            	    if(trim($var) != "" && trim($var) != "--") {	 
+                        preg_match('/Content-Disposition: form-data; name="([^\"]*)"(.*)/si', $var, $result);
+                        $postVars[trim($result[1])] = trim($resulta[2]);
+            	    }
+        	    }
+    	    }
+	    } else {
+    	    parse_str($input, $postVars);
+	    }
+
+        return $postVars;
+    }
+	
 	/**
 	 * Get data params based on request method
 	 */
@@ -172,7 +198,7 @@ class Parameters {
 				
 			case "PUT":
 			case "DELETE":
-				parse_str(file_get_contents("php://input"), $this->dataParameters);
+			    $this->dataParameters = $this->getPostFromInput();
 				break;
 		}
 		

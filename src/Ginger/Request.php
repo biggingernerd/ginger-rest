@@ -103,6 +103,9 @@ class Request {
         $this->route        = new Route($this->getUrl()->path);
         $this->parameters   = new Parameters($this->url, $this->route);
         $this->action       = $this->getAction();
+        
+        \Ginger\System\Parameters::$template = $this->route->getCleanRoute()."/".$this->action;
+        
         $this->response     = new Response();
         $this->response->setRequest($this);
     }

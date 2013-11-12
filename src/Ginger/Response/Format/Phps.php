@@ -23,7 +23,7 @@ class Phps implements Format {
 	 */
 	public static function Parse($data)
 	{
-		return serialize($data);
+		return serialize(json_decode(json_encode($data), true));
 	}
 	
 }

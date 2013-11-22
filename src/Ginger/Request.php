@@ -201,7 +201,7 @@ class Request
             $action = "index";
             switch($_SERVER['REQUEST_METHOD']) {
             case "GET":
-                if(count($this->getParameters()->getFilterParameters()) == 0) {
+                if(count($this->getFilterParameters()) == 0) {
                     $action = "index";
                 } else {
                     $action = "get";

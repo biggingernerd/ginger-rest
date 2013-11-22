@@ -108,6 +108,10 @@ class Parameters {
                 $params[$key] = array("NOT" => $this->parseValue(substr($input, 1)));
             } elseif(substr($input, 0, 2) == "><") {
                 $params[$key] = array("BETWEEN" => $this->parseValue(substr($input, 2)));
+            } elseif(substr($input, 0, 2) == ">=") {
+                $params[$key] = array("GTE" => $this->parseValue(substr($input, 2)));
+            } elseif(substr($input, 0, 2) == "<=") {
+                $params[$key] = array("LTE" => $this->parseValue(substr($input, 2)));
             } elseif(substr($input, 0, 1) == "<") {
                 $params[$key] = array("LT" => $this->parseValue(substr($input, 1)));
             } elseif(substr($input, 0, 1) == ">") {

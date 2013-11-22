@@ -1,28 +1,35 @@
 <?php
 /**
  * Ginger/Exception.php
- * 
- * @author Big Ginger Nerd
+ *
+ * @author Martijn van Maasakkers
  * @package Ginger
  * @todo Actually formatting the error message here would be better
  */
 
 namespace Ginger;
 
-
 /**
  * Ginger Exception Handler
- * 
+ *
  * @package Ginger\Library
  */
-class Exception extends \Exception 
+class Exception extends \Exception
 {
-	public function __construct($message, $code)
-	{
-	    $request = new Request();
-	    $response = $request->getResponse();
-    	$response->setStatus($code);
-    	$response->setData(array("error" => $message));
-    	$response->send();
-	}
+    /**
+     * Sends error message back to the requesting user.
+     * 
+     * @access public
+     * @param string $message
+     * @param int $code
+     * @return void
+     */
+    public function __construct($message, $code)
+    {
+        $request = new Request();
+        $response = $request->getResponse();
+        $response->setStatus($code);
+        $response->setData(array("error" => $message));
+        $response->send();
+    }
 }

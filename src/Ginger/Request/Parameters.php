@@ -2,7 +2,7 @@
 /**
  * Ginger/Request/Parameters.php
  *
- * @author Big Ginger Nerd
+ * @author Martijn van Maasakkers
  * @package Ginger
  */
 
@@ -16,7 +16,8 @@ use \Ginger\Request\Route;
  *
  * @package Ginger\Library
  */
-class Parameters {
+class Parameters 
+{
 
     /**
      * @var array $_allParameters All parameters
@@ -68,22 +69,18 @@ class Parameters {
      */
     private function getFilterParams($path)
     {
-        if(!$path)
-        {
+        if(!$path) {
             $path = "";
         }
 
         $parts = explode("/", $path);
-        if($path == "")
-        {
+        if($path == "") {
 
         } elseif(count($parts) == 1) {
             $this->filterParameters['id'] = $parts[0];
         } else {
-            foreach($parts as $key => $part)
-            {
-                if(($key % 2) == 1)
-                {
+            foreach($parts as $key => $part) {
+                if(($key % 2) == 1) {
                     $this->filterParameters[$parts[$key-1]] = urldecode($part);
                 } else {
                     $this->filterParameters[$part] = "";
@@ -93,7 +90,7 @@ class Parameters {
 
         $this->filterParameters = array_merge($_GET, $this->filterParameters);
     }
-    
+
     /**
      * Loop through parameters and parse operators
      *
@@ -101,7 +98,7 @@ class Parameters {
      *
      * @return array
      */
-    private function parseOperators($params) 
+    private function parseOperators($params)
     {
         foreach($params as $key => $input) {
             if(substr($input, 0, 1) == "!") {
@@ -119,11 +116,11 @@ class Parameters {
             } else {
                 $params[$key] = $this->parseValue($input);
             }
-        }    
-        
+        }
+
         return $params;
     }
-    
+
     /**
      * Formats the value for internals
      *
@@ -131,7 +128,7 @@ class Parameters {
      *
      * @return mixed
      */
-    private function parseValue($input) 
+    private function parseValue($input)
     {
         if(substr($input, 0, 1) == '"' && substr($input, -1) == '"') {
             $input = substr($input, 1, -1);
@@ -152,7 +149,7 @@ class Parameters {
         } elseif($input == "on") {
             $input = true;
         }
-        
+
         return $input;
     }
 
@@ -291,5 +288,4 @@ class Parameters {
     {
         return $this->dataParameters;
     }
-
 }

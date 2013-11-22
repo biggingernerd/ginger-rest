@@ -1,11 +1,17 @@
 {
 	"name": "ginger/ginger",
 	"descript": "A very easy to use RESTful framework",
+	"license": "MIT",
 	"authors": [
 		{
-			"name": "Big Ginger Nerd",
-			"email": "bgn@vanmaasakkers.net",
-			"homepage": "https://twitter.com/biggingernerd",
+			"name": "Martijn van Maasakkers",
+			"email": "martijn@vanmaasakkers.net",
+			"homepage": "https://twitter.com/mvmaasakkers",
+			"role": "Developer"
+		}, {
+			"name": "Bas van den Wijngaard",
+			"email": "bas@binkje.nl",
+			"homepage": "http://binkje.nl",
 			"role": "Developer"
 		}
 	],

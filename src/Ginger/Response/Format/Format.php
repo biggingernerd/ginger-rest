@@ -2,7 +2,7 @@
 /**
  * Ginger/Response/Format/Interface.php
  *
- * @author Big Ginger Nerd
+ * @author Martijn van Maasakkers
  * @package Ginger
  */
 

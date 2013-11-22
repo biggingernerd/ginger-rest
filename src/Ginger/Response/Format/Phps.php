@@ -2,7 +2,7 @@
 /**
  * Ginger/Response/Format/Phps.php
  *
- * @author Big Ginger Nerd
+ * @author Martijn van Maasakkers
  * @package Ginger
  */
 

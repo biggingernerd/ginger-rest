@@ -185,7 +185,7 @@ class Parameters
                 foreach($variables as $var) {
                     if(trim($var) != "" && trim($var) != "--") {
                         preg_match('/Content-Disposition: form-data; name="([^\"]*)"(.*)/si', $var, $result);
-                        $postVars[trim($result[1])] = trim($resulta[2]);
+                        $postVars[trim($result[1])] = trim($result[2]);
                     }
                 }
             }

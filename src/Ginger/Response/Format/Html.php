@@ -23,19 +23,24 @@ class Html implements Format {
 	 */
 	public static function Parse($data)
 	{
-	    $config = array(
-               "tpl_dir"       => GINGER_TEMPLATE_PATH,
-               "cache_dir"     => GINGER_TEMPLATE_CACHE_PATH
-        );
-
-        \Rain\Tpl::configure( $config );
-	
-        $data = json_decode(json_encode($data), true);
-
-        $t = new \Rain\Tpl;
-        $t->assign($data);
-        $output = $t->draw(\Ginger\System\Parameters::$template, true);
-
-		return $output;
+	    if(\Ginger\System\Parameters::$template != "options") {
+    	    $config = array(
+                   "tpl_dir"       => GINGER_TEMPLATE_PATH,
+                   "cache_dir"     => GINGER_TEMPLATE_CACHE_PATH
+            );
+    
+            \Rain\Tpl::configure( $config );
+    	
+            $data = json_decode(json_encode($data), true);
+    
+            $t = new \Rain\Tpl;
+            $t->assign($data);
+            $output = $t->draw(\Ginger\System\Parameters::$template, true);
+    
+    		return $output;
+    		
+		} else {
+    		return "";
+		}
 	}	
 }

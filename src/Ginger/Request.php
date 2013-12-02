@@ -91,7 +91,12 @@ class Request
         $this->parameters   = new Parameters($this->url, $this->route);
         $this->action       = $this->getAction();
 
-        \Ginger\System\Parameters::$template = $this->route->getCleanRoute()."/".$this->action;
+        if($this->action == "options") {
+            \Ginger\System\Parameters::$template = $this->action;    
+        } else {
+            \Ginger\System\Parameters::$template = $this->route->getCleanRoute()."/".$this->action;
+        }
+        
 
         $this->response     = new Response();
         $this->response->setRequest($this);

@@ -108,7 +108,7 @@ class Request
     public function go()
     {
         if($this->action == "options") {
-            $file == "options".$this->getExtension();
+            $file = "options".$this->getExtension();
         } else {
             // Check if handler file exists
             if($this->route->getCleanRoute() == "") {

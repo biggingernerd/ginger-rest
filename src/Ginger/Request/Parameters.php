@@ -263,8 +263,10 @@ class Parameters
             \Ginger\System\Parameters::$api_key = $_SERVER['HTTP_X_API_KEY'];
         }
 
-        // Check for existing IP Address
-        if(isset($_SERVER['REMOTE_ADDR'])) {
+        // Check for existing IP Address, but check if X-Original-IP isset
+        if(isset($_SERVER['HTTP_X_ORIGINAL_IP']) {
+            \Ginger\System\Parameters::$ip = $_SERVER['HTTP_X_ORIGINAL_IP'];
+        } else {
             \Ginger\System\Parameters::$ip = $_SERVER['REMOTE_ADDR'];
         }
     }

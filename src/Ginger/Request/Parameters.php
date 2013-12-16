@@ -264,7 +264,7 @@ class Parameters
         }
 
         // Check for existing IP Address, but check if X-Original-IP isset
-        if(isset($_SERVER['HTTP_X_ORIGINAL_IP']) {
+        if(isset($_SERVER['HTTP_X_ORIGINAL_IP'])) {
             \Ginger\System\Parameters::$ip = $_SERVER['HTTP_X_ORIGINAL_IP'];
         } else {
             \Ginger\System\Parameters::$ip = $_SERVER['REMOTE_ADDR'];

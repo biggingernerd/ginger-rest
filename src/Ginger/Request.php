@@ -278,6 +278,17 @@ class Request
     }
 
     /**
+     * getTemplate function.
+     * 
+     * @access public
+     * @return void
+     */
+    public function getTemplate() {
+        return \Ginger\System\Parameters::$template;
+    }
+
+
+    /**
      * getResponse function.
      *
      * @access public

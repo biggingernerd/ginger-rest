@@ -3,15 +3,12 @@
  * Ginger/Response/Format/Xml.php
  *
  * @author Martijn van Maasakkers
- * @package Ginger
  */
 
 namespace Ginger\Response\Format;
 
 /**
  * Ginger Response Format Xml formatter
- *
- * @package Ginger\Library
  */
 class Xml implements Format 
 {

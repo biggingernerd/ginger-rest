@@ -3,15 +3,12 @@
  * Ginger/Request/Url.php
  *
  * @author Martijn van Maasakkers
- * @package Ginger
  */
 
 namespace Ginger\Request;
 
 /**
  * Ginger Request URL Handler
- *
- * @package Ginger\Library
  */
 class Url extends \Ginger\Url 
 {

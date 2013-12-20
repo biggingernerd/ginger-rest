@@ -3,15 +3,12 @@
  * Ginger/Response/Format/Json.php
  *
  * @author Martijn van Maasakkers
- * @package Ginger
  */
 
 namespace Ginger\Response\Format;
 
 /**
  * Ginger Response Format JSON formatter
- *
- * @package Ginger\Library
  */
 class Json implements Format 
 {

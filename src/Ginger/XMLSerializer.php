@@ -3,7 +3,6 @@
  * XMLSerializer Object
  *
  * @author Martijn van Maasakkers
- * @package Ginger
  */
 
 namespace Ginger;
@@ -12,7 +11,6 @@ namespace Ginger;
  * XMLSerializer handling class
  *
  * @author Martijn van Maasakkers
- * @package Ginger
  */
 class XMLSerializer 
 {

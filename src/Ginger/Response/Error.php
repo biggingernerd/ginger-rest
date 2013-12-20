@@ -1,9 +1,8 @@
 <?php
 /**
- * Ginger/Response/Format/Json.php
+ * Ginger/Response/Error.php
  *
  * @author Martijn van Maasakkers
- * @package Ginger
  */
 
 namespace Ginger\Response;
@@ -11,9 +10,7 @@ namespace Ginger\Response;
 use \Ginger\Response;
 
 /**
- * Ginger Response Format JSON formatter
- *
- * @package Ginger\Library
+ * Ginger Response Error
  */
 class Error 
 {

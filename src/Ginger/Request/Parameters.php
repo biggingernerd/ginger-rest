@@ -3,18 +3,15 @@
  * Ginger/Request/Parameters.php
  *
  * @author Martijn van Maasakkers
- * @package Ginger
  */
 
 namespace Ginger\Request;
 
 use \Ginger\Request\Url;
-use \Ginger\Request\Route;
+use \Ginger\Route;
 
 /**
  * Ginger Request Parameters Handler
- *
- * @package Ginger\Library
  */
 class Parameters 
 {
@@ -42,7 +39,7 @@ class Parameters
      */
     public function __construct(Url $url, Route $route)
     {
-        $this->getParams($url->path, $route->getRoute());
+        $this->getParams($url->path, $route->route);
     }
 
     /**

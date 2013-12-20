@@ -3,15 +3,12 @@
  * Ginger/Response/Format/Interface.php
  *
  * @author Martijn van Maasakkers
- * @package Ginger
  */
 
 namespace Ginger\Response\Format;
 
 /**
  * Ginger Response Format Interface
- *
- * @package Ginger\Library
  */
 interface Format 
 {

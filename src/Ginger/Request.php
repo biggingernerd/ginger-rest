@@ -3,20 +3,17 @@
  * Ginger/Request.php
  *
  * @author Martijn van Maasakkers
- * @package Ginger
  */
 
 namespace Ginger;
 
 use \Ginger\Request\Parameters;
 use \Ginger\Request\Url;
-use \Ginger\Request\Route;
 use \Ginger\Response;
 
 /**
  * Ginger Request Handler
  *
- * @package Ginger\Library
  */
 class Request 
 {
@@ -49,8 +46,6 @@ class Request
      * @var string $action Action
      */
     private $action;
-
-
     /**
      * access
      *
@@ -86,8 +81,8 @@ class Request
      */
     public function __construct()
     {
-        $this->url       = new Url();
-        $this->route        = new Route($this->getUrl()->path);
+        $this->url          = new Url();
+        $this->route        = \Ginger\Routes::detect($this->getUrl()->path);
         $this->parameters   = new Parameters($this->url, $this->route);
         $this->action       = $this->getAction();
 
@@ -95,11 +90,11 @@ class Request
             \Ginger\System\Parameters::$template = $this->action;    
         } else {
             if(!\Ginger\System\Parameters::$template) {
-                \Ginger\System\Parameters::$template = $this->route->getCleanRoute()."/".$this->action;    
+                \Ginger\System\Parameters::$template = $this->route->route."/".$this->action;    
             }
         }
 
-        $this->response     = new Response();
+        $this->response = new Response();
         $this->response->setRequest($this);
     }
 
@@ -112,15 +107,14 @@ class Request
             $file = "options".$this->getExtension();
         } else {
             // Check if handler file exists
-            if($this->route->getCleanRoute() == "") {
+            if($this->route->route == "/") {
                 $file = $this->getAction().$this->getExtension();
             } else {
-                $file = $this->route->getCleanRoute()."/".$this->getAction().$this->getExtension();
+                $file = $this->route->resource . "/" .$this->getAction().$this->getExtension();
             }
         }
 
         $fullFilePath = stream_resolve_include_path($file);
-
         if($fullFilePath) {
             include($fullFilePath);
         } else {

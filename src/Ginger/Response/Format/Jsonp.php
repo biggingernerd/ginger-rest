@@ -1,17 +1,14 @@
 <?php
 /**
- * Ginger/Response/Format/Json.php
+ * Ginger/Response/Format/Jsonp.php
  *
  * @author Martijn van Maasakkers
- * @package Ginger
  */
 
 namespace Ginger\Response\Format;
 
 /**
- * Ginger Response Format JSON formatter
- *
- * @package Ginger\Library
+ * Ginger Response Format JSONp formatter
  */
 class Jsonp implements Format 
 {

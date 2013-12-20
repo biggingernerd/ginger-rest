@@ -3,15 +3,12 @@
  * Ginger/Response.php
  *
  * @author Martijn van Maasakkers
- * @package Ginger
  */
 
 namespace Ginger;
 
 /**
  * Ginger Response Handler
- *
- * @package Ginger\Library
  */
 class Response 
 {

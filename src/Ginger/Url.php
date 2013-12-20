@@ -3,15 +3,12 @@
  * Ginger/Url.php
  *
  * @author Martijn van Maasakkers
- * @package Ginger
  */
 
 namespace Ginger;
 
 /**
  * Ginger URL
- *
- * @package Ginger\Library
  */
 class Url 
 {
@@ -55,6 +52,23 @@ class Url
      * @access public
      */
     public $query;
+    
+    /**
+     * user
+     * 
+     * @var string
+     * @access public
+     */
+    public $user;
+    
+    /**
+     * pass
+     * 
+     * @var string
+     * @access public
+     */
+    public $pass;
+    
 
     /**
      * queryParts
@@ -65,6 +79,14 @@ class Url
      * @access public
      */
     public $queryParts = array();
+    
+    /**
+     * fragment
+     * 
+     * @var string
+     * @access public
+     */
+    public $fragment;
 
     /**
      * Parse url into object
@@ -74,12 +96,24 @@ class Url
     public function __construct($url)
     {
         $url = parse_url($url);
-
+        
         $this->scheme  = $url['scheme'];
         $this->host  = $url['host'];
         $this->path  = $url['path'];
         $this->query = (isset($url['query'])) ? $url['query'] : "";
 
+        if(isset($url['user'])) {
+            $this->user = $url['user'];
+        }
+
+        if(isset($url['pass'])) {
+            $this->pass = $url['pass'];
+        }
+        
+        if(isset($url['fragment'])) {
+            $this->fragment = $url['fragment'];
+        }
+        
         parse_str($this->query, $this->queryParts);
     }
 

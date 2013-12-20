@@ -3,15 +3,12 @@
  * Ginger/Response/Format/Phps.php
  *
  * @author Martijn van Maasakkers
- * @package Ginger
  */
 
 namespace Ginger\Response\Format;
 
 /**
  * Ginger Response Format PHPS formatter
- *
- * @package Ginger\Library
  */
 class Phps implements Format 
 {

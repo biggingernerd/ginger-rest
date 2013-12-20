@@ -3,7 +3,6 @@
  * Ginger/System/Parameters.php
  *
  * @author Martijn van Maasakkers
- * @package Ginger
  */
 
 namespace Ginger\System;
@@ -11,8 +10,6 @@ namespace Ginger\System;
 
 /**
  * Ginger System Parameters Handler
- *
- * @package Ginger\Library
  */
 class Parameters {
 

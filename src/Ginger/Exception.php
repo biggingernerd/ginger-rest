@@ -3,7 +3,6 @@
  * Ginger/Exception.php
  *
  * @author Martijn van Maasakkers
- * @package Ginger
  * @todo Actually formatting the error message here would be better
  */
 
@@ -11,8 +10,6 @@ namespace Ginger;
 
 /**
  * Ginger Exception Handler
- *
- * @package Ginger\Library
  */
 class Exception extends \Exception
 {

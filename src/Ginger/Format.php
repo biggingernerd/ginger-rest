@@ -13,9 +13,34 @@ namespace Ginger;
  */
 class Format
 {
+    /**
+     * format
+     * 
+     * (default value: "json")
+     * 
+     * @var string
+     * @access public
+     * @static
+     */
     public static $format = "json";
+    /**
+     * mimetype
+     * 
+     * (default value: "application/json")
+     * 
+     * @var string
+     * @access public
+     * @static
+     */
     public static $mimetype = "application/json";
     
+    /**
+     * allowedFormats
+     * 
+     * @var mixed
+     * @access private
+     * @static
+     */
     private static $allowedFormats = array("json" => array(
             "class" => "Json",
             "mimetype" => "application/json"
@@ -38,6 +63,13 @@ class Format
         )
     );
     
+    /**
+     * mimeMapper
+     * 
+     * @var mixed
+     * @access private
+     * @static
+     */
     private static $mimeMapper = array(
         "application/json"  => "json",
         "application/jsonp" => "jsonp",
@@ -46,6 +78,14 @@ class Format
         "text/html"         => "html"
     );
 
+    /**
+     * getFormatByAcceptHeader function.
+     * 
+     * @access public
+     * @static
+     * @param mixed $header
+     * @return void
+     */
     public static function getFormatByAcceptHeader($header)
     {
         if(isset(self::$mimeMapper[$header])) {

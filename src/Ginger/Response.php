@@ -68,6 +68,20 @@ class Response
             "mimetype" => "text/html"
         )
     );
+    
+    /**
+     * mimeMapper
+     * 
+     * @var array
+     * @access private
+     */
+    private $mimeMapper = array(
+        "application/json"  => "json",
+        "application/jsonp" => "jsonp",
+        "application/xml"   => "xml",
+        "application/phps"  => "phps",
+        "text/html"         => "html"
+    );
 
     /**
      * Default format value

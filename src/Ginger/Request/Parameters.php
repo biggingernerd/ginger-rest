@@ -228,7 +228,7 @@ class Parameters
             "_options"       => "options",
             "_locale"        => "locale",
             "_mode"          => "mode",
-            "_template"   => "template",
+            "_template"      => "template",
             "_flags"         => "flags",
             "_ts"            => "ts",
             "oauth_token"    => "oauth_token",
@@ -266,6 +266,19 @@ class Parameters
         } else {
             \Ginger\System\Parameters::$ip = $_SERVER['REMOTE_ADDR'];
         }
+        
+        // Check for accept header and let it be leading
+        if(isset($_SERVER['HTTP_ACCEPT'])) {
+            \Ginger\System\Parameters::$format = \Ginger\Format::getFormatByAcceptHeader($_SERVER['HTTP_ACCEPT']);
+        }
+        $lang = "";
+        if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+            $lang = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
+        }
+        
+/*         $options = \Ginger\Options::getInstance(); */
+        
+        \Ginger\Options::getInstance()->locale = new \Ginger\Locale($lang);
     }
 
     /**

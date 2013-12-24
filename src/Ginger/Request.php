@@ -282,7 +282,6 @@ class Request
         return \Ginger\System\Parameters::$template;
     }
 
-
     /**
      * getResponse function.
      *

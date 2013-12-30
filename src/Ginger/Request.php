@@ -90,7 +90,7 @@ class Request
             \Ginger\System\Parameters::$template = $this->action;    
         } else {
             if(!\Ginger\System\Parameters::$template) {
-                \Ginger\System\Parameters::$template = $this->route->route."/".$this->action;    
+                \Ginger\System\Parameters::$template = $this->route->{"resource"}."/".$this->action;    
             }
         }
 

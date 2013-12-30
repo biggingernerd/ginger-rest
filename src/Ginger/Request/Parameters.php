@@ -268,7 +268,7 @@ class Parameters
         }
         
         // Check for accept header and let it be leading
-        if(isset($_SERVER['HTTP_ACCEPT']) && !isset($this->filterParameters['_format'])) {
+        if(isset($_SERVER['HTTP_ACCEPT']) && \Ginger\System\Parameters::$format === "json") {
             \Ginger\System\Parameters::$format = \Ginger\Format::getFormatByAcceptHeader($_SERVER['HTTP_ACCEPT']);
         }
         

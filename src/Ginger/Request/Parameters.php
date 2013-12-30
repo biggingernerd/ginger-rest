@@ -268,9 +268,10 @@ class Parameters
         }
         
         // Check for accept header and let it be leading
-        if(isset($_SERVER['HTTP_ACCEPT'])) {
+        if(isset($_SERVER['HTTP_ACCEPT']) && !isset($this->filterParameters['_format'])) {
             \Ginger\System\Parameters::$format = \Ginger\Format::getFormatByAcceptHeader($_SERVER['HTTP_ACCEPT']);
         }
+        
         $lang = "";
         if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
             $lang = $_SERVER['HTTP_ACCEPT_LANGUAGE'];

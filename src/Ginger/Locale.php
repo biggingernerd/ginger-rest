@@ -50,6 +50,10 @@ class Locale
      */
     public function __construct($locale = "nl_NL")
     {
+        if($locale == "") {
+            $locale = "nl_NL";
+        }
+    
         if(strpos($locale, ",") !== false) {
             $aaparts = explode(",", $locale);
             $locale = $aaparts[0];

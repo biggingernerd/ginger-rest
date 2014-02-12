@@ -172,7 +172,8 @@ class Response
         // Send content type header
         header("Content-Type: ".$format['mimetype']."; charset=utf-8");
 
-
+		// Set content length header
+		header("Content-Length: ".strlen($data));
 
         if(function_exists("ginger_log")) {
             ginger_log($this);

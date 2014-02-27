@@ -72,5 +72,12 @@ class Locale
         setlocale(LC_MONETARY,  $this->locale);
         setlocale(LC_TIME,      $this->locale);
         setlocale(LC_MESSAGES,  $this->locale);
+        
+        if(defined('GINGER_LOCALE_PATH')) {
+            bindtextdomain("messages", GINGER_LOCALE_PATH);
+            textdomain("messages");
+        }
+        
+        
     }
 }

@@ -273,11 +273,12 @@ class Parameters
         }
         
         $lang = "";
-        if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+        
+        if(\Ginger\System\Parameters::$locale !== null) {
+            $lang = \Ginger\System\Parameters::$locale;
+        }else if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
             $lang = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
         }
-        
-/*         $options = \Ginger\Options::getInstance(); */
         
         \Ginger\Options::getInstance()->locale = new \Ginger\Locale($lang);
     }

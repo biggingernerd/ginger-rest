@@ -169,7 +169,7 @@ class Parameters
      */
     public function getPostFromInput() {
         $ct = $_SERVER['CONTENT_TYPE'];
-        $position = stripos($ct, "multipart/form-data;");
+        $position = stripos($ct, "boundary=");
 
         $input = file_get_contents("php://input");
         $postVars = array();
@@ -193,6 +193,10 @@ class Parameters
             parse_str($input, $postVars);
         }
 
+        if(count($_POST) > 0 && count($postVars) === 0) {
+            $postVars = $_POST;
+        }
+        
         return $postVars;
     }
 
@@ -206,7 +210,7 @@ class Parameters
         switch($method)
         {
         case "POST":
-            $this->dataParameters = $_POST;
+            $this->dataParameters = $this->getPostFromInput();
             break;
 
         case "PUT":

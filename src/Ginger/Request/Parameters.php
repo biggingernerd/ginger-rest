@@ -178,10 +178,13 @@ class Parameters
             $exp = explode("boundary=", $ct);
             if(isset($exp[1])) {
                 $boundary = trim($exp[1]);
+                
                 $variables = explode("--".$boundary, $input);
+                
                 foreach($variables as $var) {
+                    $var = urldecode($var);
                     if(trim($var) != "" && trim($var) != "--") {
-                        preg_match('/Content-Disposition: form-data; name="([^\"]*)"(.*)/si', $var, $result);
+                        preg_match('/Content-Disposition:[ _]*form-data;[ _]*name="([^\"]*)"(.*)/si', $var, $result);
                         $postVars[trim($result[1])] = trim($result[2]);
                     }
                 }

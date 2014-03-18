@@ -20,7 +20,16 @@ class Html implements Format {
 	 */
 	public static function Parse($data)
 	{
-	    if(\Ginger\System\Parameters::$template != "options") {
+	    $filepath = BASEPATH."/templates/".\Ginger\System\Parameters::$template.".phtml";
+
+        if(file_exists($filepath)) {
+            ob_start();
+            include($filepath);
+            $output = ob_get_contents();
+            ob_end_clean();
+
+            return $output;
+	    } elseif(\Ginger\System\Parameters::$template != "options") {
     	    $config = array(
                    "tpl_dir"       => GINGER_TEMPLATE_PATH,
                    "cache_dir"     => GINGER_TEMPLATE_CACHE_PATH

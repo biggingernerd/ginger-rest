@@ -7,7 +7,6 @@
 
 namespace Ginger\Request;
 
-use \Ginger\Request\Url;
 use \Ginger\Route;
 
 /**
@@ -37,7 +36,7 @@ class Parameters
      * @param Url $url
      * @param Route $route
      */
-    public function __construct(Url $url, Route $route)
+    public function __construct(\Ginger\Request\Url $url, Route $route)
     {
         $this->getParams($url->path, $route->route);
     }

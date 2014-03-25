@@ -8,7 +8,6 @@
 namespace Ginger;
 
 use \Ginger\Request\Parameters;
-/* use \Ginger\Request\Url; */
 use \Ginger\Response;
 
 /**

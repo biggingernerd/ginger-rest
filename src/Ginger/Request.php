@@ -82,7 +82,7 @@ class Request
     {
         $this->url          = new \Ginger\Request\Url();
         $this->route        = \Ginger\Routes::detect($this->getUrl()->path);
-        $this->parameters   = new Parameters($this->url, $this->route);
+        $this->parameters   = new \Ginger\Request\Parameters($this->url, $this->route);
         $this->action       = $this->getAction();
 
         if($this->action == "options") {

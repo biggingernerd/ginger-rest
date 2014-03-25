@@ -8,7 +8,7 @@
 namespace Ginger;
 
 use \Ginger\Request\Parameters;
-use \Ginger\Request\Url;
+/* use \Ginger\Request\Url; */
 use \Ginger\Response;
 
 /**
@@ -81,7 +81,7 @@ class Request
      */
     public function __construct()
     {
-        $this->url          = new Url();
+        $this->url          = new \Ginger\Request\Url();
         $this->route        = \Ginger\Routes::detect($this->getUrl()->path);
         $this->parameters   = new Parameters($this->url, $this->route);
         $this->action       = $this->getAction();

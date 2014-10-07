@@ -255,10 +255,18 @@ class Parameters
 
         // Make auth header leading
         if(isset($_SERVER['HTTP_AUTHORIZATION'])) {
-            $check_for = "oauth_token";
-            if(substr($_SERVER['HTTP_AUTHORIZATION'], 0, strlen($check_for)) == $check_for) {
-                \Ginger\System\Parameters::$oauth_token = trim(substr($_SERVER['HTTP_AUTHORIZATION'], strlen($check_for)));
+            $parts = explode(", ", $_SERVER['HTTP_AUTHORIZATION']);
+            foreach($parts as $part) {
+                $check_for = "oauth_token";
+                if(substr($part, 0, strlen($check_for)) == $check_for) {
+                    \Ginger\System\Parameters::$oauth_token = trim(substr($part, strlen($check_for)));
+                }
+                $check_for2 = "Bearer";
+                if(substr($part, 0, strlen($check_for2)) == $check_for2) {
+                    \Ginger\System\Parameters::$bearer_token = trim(substr($part, strlen($check_for2)));
+                }
             }
+            
         }
 
         // Check for X-NI-API-Key

@@ -63,6 +63,7 @@ class Parameters {
      */
     public static $oauth_token;
 
+    public static $bearer_token;
     /**
      * api_key
      *

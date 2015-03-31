@@ -29,6 +29,17 @@ class Parameters {
 	 */
 	private $dataParameters = array();
 
+
+	/**
+	 * rawData
+	 * 
+	 * The raw post body data
+	 *
+	 * (default value: "")
+	 * 
+	 * @var string
+	 * @access private
+	 */
 	private $rawData = "";
 
 	/**
@@ -156,14 +167,16 @@ class Parameters {
 	}
 
 	/**
-	 * Parse postfield data when content-dispositino is happening, else return
-	 * normal postfield vars
+	 * Parse postfield data when content-dispositioning is happening, else return
+	 * normal postfield vars.
+	 * If the content-type is application/json the content is parsed as json array body
 	 *
 	 * @return array
 	 */
 	public function getPostFromInput() {
 		$ct = $_SERVER['CONTENT_TYPE'];
 		$position = stripos($ct, "boundary=");
+		$jsonCheck = "application/json";
 
 		$input = file_get_contents("php://input");
 
@@ -186,6 +199,8 @@ class Parameters {
 					}
 				}
 			}
+        } else if(substr($ct, 0, strlen($jsonCheck)) === $jsonCheck) {
+            $postVars = json_decode($input, true);
 		} else {
 			parse_str($input, $postVars);
 		}

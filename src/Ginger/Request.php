@@ -217,6 +217,9 @@ class Request {
 				case "HEAD":
 					$action = "head";
 					break;
+				case "SEARCH":
+					$action = "search";
+					break;
 				case "OPTIONS":
 					$action = "options";
 					break;

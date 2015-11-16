@@ -32,11 +32,11 @@ class Parameters {
 
 	/**
 	 * rawData
-	 * 
+	 *
 	 * The raw post body data
 	 *
 	 * (default value: "")
-	 * 
+	 *
 	 * @var string
 	 * @access private
 	 */
@@ -105,7 +105,9 @@ class Parameters {
 	 */
 	private function parseOperators($params) {
 		foreach ($params as $key => $input) {
-			if (substr($input, 0, 1) == "!") {
+            if(is_array($input)) {
+
+            } elseif (substr($input, 0, 1) == "!") {
 				$params[$key] = array("NOT" => $this->parseValue(substr($input, 1)));
 			} elseif (substr($input, 0, 2) == "><") {
 				$params[$key] = array("BETWEEN" => $this->parseValue(substr($input, 2)));
@@ -133,7 +135,9 @@ class Parameters {
 	 * @return mixed
 	 */
 	private function parseValue($input) {
-		if (substr($input, 0, 1) == '"' && substr($input, -1) == '"') {
+        if(is_array($input)) {
+
+        } elseif (substr($input, 0, 1) == '"' && substr($input, -1) == '"') {
 			$input = substr($input, 1, -1);
 		} elseif (strpos($input, "|")) {
 			$input = explode("|", $input);

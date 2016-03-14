@@ -4,3 +4,4 @@
 phpdo*
 vendor
 composer.lock
+/nbproject/

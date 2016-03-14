@@ -137,23 +137,23 @@ class Parameters {
 	private function parseValue($input) {
         if(is_array($input)) {
 
-        } elseif (substr($input, 0, 1) == '"' && substr($input, -1) == '"') {
+        } elseif (substr($input, 0, 1) === '"' && substr($input, -1) === '"') {
 			$input = substr($input, 1, -1);
 		} elseif (strpos($input, "|")) {
 			$input = explode("|", $input);
 			foreach ($input as $key => $value) {
 				$input[$key] = $this->parseValue($value);
 			}
-		} elseif ($input == "false") {
+		} elseif ($input === "false") {
 			$input = false;
-		} elseif ($input == "true") {
+		} elseif ($input === "true") {
 			$input = true;
 		} elseif (is_numeric($input)) {
 			$input = (float) $input;
 			if (!strpos($input, ".")) {
 				$input = (int) $input;
 			}
-		} elseif ($input == "on") {
+		} elseif ($input === "on") {
 			$input = true;
 		}
 

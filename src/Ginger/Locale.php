@@ -63,6 +63,9 @@ class Locale
         $parts = explode("_", $locale);
         
         $this->language = strtolower($parts[0]);
+        if (!isset($parts[1])) {
+            $parts[1] = "NL";
+        }
         $this->region = strtoupper($parts[1]);
         
         $this->locale = $this->language . "_" . $this->region;

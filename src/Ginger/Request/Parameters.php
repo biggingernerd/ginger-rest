@@ -155,8 +155,9 @@ class Parameters
         } elseif ($input === "true") {
             $input = true;
         } elseif (is_numeric($input)) {
-            $input = (float)$input;
-            if (!strpos($input, ".")) {
+            if (strpos($input, ".") !== false) {
+                $input = (float)$input;
+            } else {
                 $input = (int)$input;
             }
         } elseif ($input === "on") {

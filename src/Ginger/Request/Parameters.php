@@ -347,6 +347,14 @@ class Parameters
     }
 
     /**
+     * @param array $params
+     * @return void
+     */
+    public function setFilterParameters($params) {
+        $this->filterParameters = $params;
+    }
+
+    /**
      * Return all filter parameters
      *
      * @return array

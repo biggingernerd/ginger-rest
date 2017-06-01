@@ -10,7 +10,7 @@ namespace Ginger;
 /**
  * Ginger Response Handler
  */
-class Response 
+class Response
 {
 
     /**
@@ -38,7 +38,7 @@ class Response
     /**
      * request
      *
-     * @var mixed
+     * @var \Ginger\Request
      * @access private
      */
     private $request;
@@ -47,7 +47,8 @@ class Response
      * All allowed formats + classes and mimetypes
      * @var array
      */
-    private $allowedFormats = array("json" => array(
+    private $allowedFormats = array(
+        "json" => array(
             "class" => "Json",
             "mimetype" => "application/json"
         ),
@@ -68,19 +69,19 @@ class Response
             "mimetype" => "text/html"
         )
     );
-    
+
     /**
      * mimeMapper
-     * 
+     *
      * @var array
      * @access private
      */
     private $mimeMapper = array(
-        "application/json"  => "json",
+        "application/json" => "json",
         "application/jsonp" => "jsonp",
-        "application/xml"   => "xml",
-        "application/phps"  => "phps",
-        "text/html"         => "html"
+        "application/xml" => "xml",
+        "application/phps" => "phps",
+        "text/html" => "html"
     );
 
     /**
@@ -148,9 +149,21 @@ class Response
     private function parseDataToString($data)
     {
         $format = $this->allowedFormats[$this->format];
-        $className = "\\Ginger\\Response\\Format\\".$format['class'];
+        $className = "\\Ginger\\Response\\Format\\" . $format['class'];
         return $className::Parse($data);
 
+    }
+
+    /**
+     * getContentType returns the returnable content type
+     *
+     * @return array
+     */
+    public function getContentType()
+    {
+        $format = (!empty($this->allowedFormats[$this->format])) ? $this->allowedFormats[$this->format] : $this->allowedFormats[$this->defaultFormat];
+
+        return $format['mimetype'];
     }
 
     /**
@@ -165,17 +178,17 @@ class Response
         // Send status header
         header($this->getStatus(), true, $this->getStatus());
 
-        foreach(self::$headers as $key => $value) {
-            header($key.": ".$value);
+        foreach (self::$headers as $key => $value) {
+            header($key . ": " . $value);
         }
 
         // Send content type header
-        header("Content-Type: ".$format['mimetype']."; charset=utf-8");
+        header("Content-Type: " . $format['mimetype'] . "; charset=utf-8");
 
-		// Set content length header
-		header("Content-Length: ".strlen($data));
+        // Set content length header
+        header("Content-Length: " . strlen($data));
 
-        if(function_exists("ginger_log")) {
+        if (function_exists("ginger_log")) {
             ginger_log($this);
         }
 
@@ -193,14 +206,12 @@ class Response
      */
     public function setFormat($format = false)
     {
-        if(!$format)
-        {
+        if (!$format) {
             $format = \Ginger\System\Parameters::$format;
         }
-        $this->format   = $format;
+        $this->format = $format;
 
-        if(!isset($this->allowedFormats[$this->format]))
-        {
+        if (!isset($this->allowedFormats[$this->format])) {
             $this->format = $this->defaultFormat;
         }
     }
@@ -271,17 +282,16 @@ class Response
      */
     public function setCallback($callback = false)
     {
-        if(!$callback)
-        {
+        if (!$callback) {
             $callback = \Ginger\System\Parameters::$callback;
         }
         $this->callback = $callback;
     }
 
-    
+
     /**
      * getFilters function.
-     * 
+     *
      * @access public
      * @return void
      */
@@ -292,7 +302,7 @@ class Response
 
     /**
      * getAction function.
-     * 
+     *
      * @access public
      * @return void
      */
@@ -303,7 +313,7 @@ class Response
 
     /**
      * setRequest function.
-     * 
+     *
      * @access public
      * @param mixed $request
      * @return void
@@ -315,9 +325,9 @@ class Response
 
     /**
      * getRequest function.
-     * 
+     *
      * @access public
-     * @return void
+     * @return \Ginger\Request
      */
     public function getRequest()
     {
@@ -326,7 +336,7 @@ class Response
 
     /**
      * addHeader function.
-     * 
+     *
      * @access public
      * @static
      * @param mixed $key
@@ -340,7 +350,7 @@ class Response
 
     /**
      * removeHeader function.
-     * 
+     *
      * @access public
      * @static
      * @param mixed $key
@@ -348,14 +358,14 @@ class Response
      */
     public static function removeHeader($key)
     {
-        if(isset(self::$headers[$key])) {
+        if (isset(self::$headers[$key])) {
             unset(self::$headers[$key]);
         }
     }
 
     /**
      * getHeaders function.
-     * 
+     *
      * @access public
      * @static
      * @return void

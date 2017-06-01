@@ -7,286 +7,380 @@
 
 namespace Ginger;
 
-use \Ginger\Request\Parameters;
 use \Ginger\Response;
+use \Ginger\Url;
+use \Ginger\Request\Parameters;
 
 /**
  * Ginger Request Handler
  *
  */
-class Request {
+class Request
+{
 
-	/**
-	 * Contains the parameters object
-	 *
-	 * @var \Ginger\Request\Parameters
-	 */
-	private $parameters;
+    /**
+     * Contains the parameters object
+     *
+     * @var Parameters
+     */
+    private $parameters;
 
-	/**
-	 * Contains the current URL object
-	 *
-	 * @var \Ginger\Request\Url
-	 */
-	private $url;
+    /**
+     * Contains the current URL object
+     *
+     * @var \Ginger\Request\Url
+     */
+    private $url;
 
-	/**
-	 * @var \Ginger\Request\Route $route Route object
-	 */
-	private $route;
+    /**
+     * @var \Ginger\Request\Route $route Route object
+     */
+    private $route;
 
-	/**
-	 * @var string $method Request Method
-	 */
-	private $method;
+    /**
+     * @var string $method Request Method
+     */
+    private $method;
 
-	/**
-	 * @var string $action Action
-	 */
-	private $action;
-	/**
-	 * access
-	 *
-	 * (default value: false)
-	 *
-	 * @var bool
-	 * @access private
-	 */
-	private $access = false;
+    /**
+     * @var string $action Action
+     */
+    private $action;
+    /**
+     * access
+     *
+     * (default value: false)
+     *
+     * @var bool
+     * @access private
+     */
+    private $access = false;
 
-	/**
-	 * data
-	 *
-	 * (default value: false)
-	 *
-	 * @var bool
-	 * @access private
-	 */
-	private $data = false;
+    /**
+     * data
+     *
+     * (default value: false)
+     *
+     * @var bool
+     * @access private
+     */
+    private $data = false;
 
-	/**
-	 * response
-	 *
-	 * (default value: null)
-	 *
-	 * @var mixed
-	 * @access private
-	 */
-	private $response = null;
+    /**
+     * response
+     *
+     * @var \Ginger\Response
+     * @access private
+     */
+    private $response;
 
-	/**
-	 * Constructor function
-	 */
-	public function __construct() {
-		$this->url = new \Ginger\Request\Url();
-		$this->route = \Ginger\Routes::detect($this->getUrl()->path);
-		$this->parameters = new \Ginger\Request\Parameters($this->url, $this->route);
-		$this->action = $this->getAction();
+    /**
+     * Constructor function
+     *
+     * If $skip = true (default it is false) we can skip the initial initialization and use the setter methods later on.
+     *
+     * @param bool $skip
+     */
+    public function __construct($skip = false)
+    {
+        if(!$skip) {
+            $this->url = new \Ginger\Request\Url();
+            $this->route = \Ginger\Routes::detect($this->getUrl()->path);
+            $this->parameters = new Parameters($this->url, $this->route);
+            $this->action = $this->getAction();
 
-		if ($this->action == "options") {
-			\Ginger\System\Parameters::$template = $this->action;
-		} else {
-			if (!\Ginger\System\Parameters::$template) {
-				\Ginger\System\Parameters::$template = $this->route->{"resource"} . "/" . $this->action;
-			}
-		}
+            if ($this->action == "options") {
+                \Ginger\System\Parameters::$template = $this->action;
+            } else {
+                if (!\Ginger\System\Parameters::$template) {
+                    \Ginger\System\Parameters::$template = $this->route->{"resource"} . "/" . $this->action;
+                }
+            }
 
-		$this->response = new Response();
-		$this->response->setRequest($this);
-	}
+            $this->response = new Response();
+            $this->response->setRequest($this);
+        }
+    }
 
-	/**
-	 * Load file and dispatch to response
-	 */
-	public function go() {
-		if ($this->action == "options") {
-			$file = "options" . $this->getExtension();
-		} else {
-			// Check if handler file exists
-			if ($this->route->route == "/") {
-				$file = $this->getAction() . $this->getExtension();
-			} else {
-				$file = $this->route->resource . "/" . $this->getAction() . $this->getExtension();
-			}
-		}
+    /**
+     * The setRoute is needed so we can directly attach/overwrite routes even after the Request class is instantiated.
+     *
+     * @param Route $route
+     * @return void
+     */
+    public function setRoute(\Ginger\Route $route)
+    {
+        $this->route = $route;
+    }
 
-		$fullFilePath = stream_resolve_include_path($file);
-		if ($fullFilePath) {
-			include $fullFilePath;
-		} else {
-			throw new \Ginger\Exception("Not implemented", 501);
-		}
+    /**
+     * The setParameters is needed so we can directly attach/overwrite parameters even after the Request class is
+     * instantiated
+     *
+     * @param Parameters $parameters
+     * @return void
+     */
+    public function setParameters(Parameters $parameters)
+    {
+        $this->parameters = $parameters;
+    }
 
-		$this->getResponse()->send();
-	}
+    /**
+     * The setAction is needed so we can directly attach/overwrite action even after the Request class is
+     * instantiated
+     *
+     * @param string $action
+     * @return void
+     */
+    public function setAction($action)
+    {
+        $this->action = $action;
+    }
 
-	/**
-	 * Return parameter object
-	 *
-	 * @return \Ginger\Request\Parameters
-	 */
-	public function getParameters() {
-		return $this->parameters;
-	}
+    /**
+     * The setUrl is needed so we can directly attach/overwrite url even after the Request class is
+     * instantiated
+     *
+     * @param Response $response
+     * @return void
+     */
+    public function setResponse(Response $response)
+    {
+        $this->response = $response;
+    }
 
-	/**
-	 * Return the filter array
-	 *
-	 * @return array
-	 */
-	public function getFilterParameters() {
-		return $this->parameters->getFilterParameters();
-	}
+    /**
+     * The setResponse is needed so we can directly attach/overwrite response object even after the Request class is
+     * instantiated
+     *
+     * @param Url $url
+     * @return void
+     */
+    public function setURL(Url $url)
+    {
+        $this->url = $url;
+    }
 
-	/**
-	 * Return the filter array
-	 *
-	 * @return array
-	 */
-	public function getPostBody() {
-		return $this->parameters->getPostBody();
-	}
+    /**
+     * Load file and dispatch to response. $return = false means default action (which is to output directly).
+     * $return = true means return the response object. This way we can use this in bootstrapping or encapsulation.
+     *
+     * @param bool $return
+     * @return \Ginger\Response
+     * @throws Exception
+     */
+    public function go($return = false)
+    {
+        if ($this->action == "options") {
+            $file = "options" . $this->getExtension();
+        } else {
+            // Check if handler file exists
+            if ($this->route->route == "/") {
+                $file = $this->getAction() . $this->getExtension();
+            } else {
+                $file = $this->route->resource . "/" . $this->getAction() . $this->getExtension();
+            }
+        }
+        $fullFilePath = stream_resolve_include_path($file);
+        if ($fullFilePath) {
+            include $fullFilePath;
+        } else {
+            throw new \Ginger\Exception("Not implemented", 501);
+        }
 
-	/**
-	 * Return the data array
-	 *
-	 * @return array
-	 */
-	public function getDataParameters() {
-		return $this->parameters->getDataParameters();
-	}
+        if (!$return) {
+            // This getResponse()->send() outputs directly and exits.
+            $this->getResponse()->send();
+        } else {
+            return $this->getResponse();
+        }
+    }
 
-	/**
-	 * Return Route object
-	 *
-	 * @return \Ginger\Request\Route
-	 */
-	public function getRoute() {
-		return $this->route;
-	}
+    /**
+     * Return parameter object
+     *
+     * @return Parameters
+     */
+    public function getParameters()
+    {
+        return $this->parameters;
+    }
 
-	/**
-	 * Return URL object
-	 *
-	 * @return \Ginger\Request\Url
-	 */
-	public function getUrl() {
-		return $this->url;
-	}
+    /**
+     * Return the filter array
+     *
+     * @return array
+     */
+    public function getFilterParameters()
+    {
+        return $this->parameters->getFilterParameters();
+    }
 
-	/**
-	 * Return Request Method
-	 *
-	 * @return string
-	 */
-	public function getMethod() {
-		if (!isset($this->method)) {
-			$this->method = $_SERVER['REQUEST_METHOD'];
-		}
+    /**
+     * Return the filter array
+     *
+     * @return array
+     */
+    public function getPostBody()
+    {
+        return $this->parameters->getPostBody();
+    }
 
-		return $this->method;
-	}
+    /**
+     * Return the data array
+     *
+     * @return array
+     */
+    public function getDataParameters()
+    {
+        return $this->parameters->getDataParameters();
+    }
 
-	/**
-	 * Return current action
-	 *
-	 * @return string
-	 */
-	public function getAction() {
-		if ($this->action) {
-			return $this->action;
-		} else {
-			$action = "index";
-			switch ($_SERVER['REQUEST_METHOD']) {
-				case "GET":
-					if (count($this->getFilterParameters()) == 0) {
-						$action = "index";
-					} else {
-						$action = "get";
-					}
-					break;
-				case "POST":
-					$action = "post";
-					break;
-				case "PUT":
-					$action = "put";
-					break;
-				case "DELETE":
-					$action = "delete";
-					break;
-				case "HEAD":
-					$action = "head";
-					break;
-				case "SEARCH":
-					$action = "search";
-					break;
-				case "OPTIONS":
-					$action = "options";
-					break;
-			}
+    /**
+     * Return Route object
+     *
+     * @return \Ginger\Request\Route
+     */
+    public function getRoute()
+    {
+        return $this->route;
+    }
 
-			return $action;
-		}
-	}
+    /**
+     * Return URL object
+     *
+     * @return \Ginger\Request\Url
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
 
-	/**
-	 * Return module file extension
-	 *
-	 * @return string
-	 */
-	public function getExtension() {
-		return ".php";
-	}
+    /**
+     * Return Request Method
+     *
+     * @return string
+     */
+    public function getMethod()
+    {
+        if (!isset($this->method)) {
+            $this->method = $_SERVER['REQUEST_METHOD'];
+        }
 
-	/**
-	 * setResponseData function.
-	 *
-	 * @access public
-	 * @param array $data (default: array())
-	 * @return void
-	 */
-	public function setResponseData($data = array()) {
-		$this->data = $data;
-	}
+        return $this->method;
+    }
 
-	/**
-	 * getResponseData function.
-	 *
-	 * @access public
-	 * @return void
-	 */
-	public function getResponseData() {
-		return $this->data;
-	}
+    /**
+     * Return current action. This function is made to be backwards compatible so if $method is empty we fall
+     * back in old methods (using $_SERVER['REQUEST_METHOD'] and using cached version of $action in memory.
+     *
+     * @param string $method
+     * @return string
+     */
+    public function getAction($method = '')
+    {
+        if (empty($method)) {
+            if ($this->action != "") {
+                return $this->action;
+            }
+            $method = $_SERVER['REQUEST_METHOD'];
+        }
+        $action = "index";
+        switch ($method) {
+            case "GET":
+                if (count($this->getFilterParameters()) == 0) {
+                    $action = "index";
+                } else {
+                    $action = "get";
+                }
+                break;
+            case "POST":
+                $action = "post";
+                break;
+            case "PUT":
+                $action = "put";
+                break;
+            case "DELETE":
+                $action = "delete";
+                break;
+            case "HEAD":
+                $action = "head";
+                break;
+            case "SEARCH":
+                $action = "search";
+                break;
+            case "OPTIONS":
+                $action = "options";
+                break;
+        }
+        $this->action = $action;
+        return $action;
+    }
 
-	/**
-	 * setTemplate function.
-	 *
-	 * @access public
-	 * @param string $template
-	 * @return void
-	 */
-	public function setTemplate($template) {
-		\Ginger\System\Parameters::$template = $template;
-	}
+    /**
+     * Return module file extension
+     *
+     * @return string
+     */
+    public function getExtension()
+    {
+        return ".php";
+    }
 
-	/**
-	 * getTemplate function.
-	 *
-	 * @access public
-	 * @return void
-	 */
-	public function getTemplate() {
-		return \Ginger\System\Parameters::$template;
-	}
+    /**
+     * setResponseData function.
+     *
+     * @access public
+     * @param array $data (default: array())
+     * @return void
+     */
+    public function setResponseData($data = array())
+    {
+        $this->data = $data;
+    }
 
-	/**
-	 * getResponse function.
-	 *
-	 * @access public
-	 * @return void
-	 */
-	public function getResponse() {
-		return $this->response;
-	}
+    /**
+     * getResponseData function.
+     *
+     * @access public
+     * @return void
+     */
+    public function getResponseData()
+    {
+        return $this->data;
+    }
+
+    /**
+     * setTemplate function.
+     *
+     * @access public
+     * @param string $template
+     * @return void
+     */
+    public function setTemplate($template)
+    {
+        \Ginger\System\Parameters::$template = $template;
+    }
+
+    /**
+     * getTemplate function.
+     *
+     * @access public
+     * @return void
+     */
+    public function getTemplate()
+    {
+        return \Ginger\System\Parameters::$template;
+    }
+
+    /**
+     * getResponse function.
+     *
+     * @access public
+     * @return \Ginger\Response
+     */
+    public function getResponse()
+    {
+        return $this->response;
+    }
 }

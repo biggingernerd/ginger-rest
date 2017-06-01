@@ -97,8 +97,8 @@ class Url
     {
         $url = parse_url($url);
         
-        $this->scheme  = $url['scheme'];
-        $this->host  = $url['host'];
+        $this->scheme  = (!empty($url['scheme'])) ? $url['scheme'] : "";
+        $this->host  = (!empty($url['host'])) ? $url['host'] : "";
         $this->path  = $url['path'];
         $this->query = (isset($url['query'])) ? $url['query'] : "";
 

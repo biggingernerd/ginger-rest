@@ -170,7 +170,7 @@ class Parameters
     /**
      * Loop through filter parameters and formats the values for internals
      */
-    private function parseParameterValues()
+    public function parseParameterValues()
     {
         $this->filterParameters = $this->parseOperators($this->filterParameters);
         foreach ($this->dataParameters as $key => $input) {
@@ -242,6 +242,20 @@ class Parameters
                 $this->dataParameters = $this->getPostFromInput();
                 break;
         }
+    }
+
+    /**
+     * @param $data
+     */
+    public function setDataParams($data) {
+        $this->dataParameters = $data;
+    }
+
+    /**
+     * @param $data
+     */
+    public function setRawData($data) {
+        $this->rawData = $data;
     }
 
     /**

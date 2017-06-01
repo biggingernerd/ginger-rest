@@ -44,13 +44,21 @@ class Parameters
     private $rawData = "";
 
     /**
+     * skipGet is used to skip $_GET in filter parameters
+     * @var bool
+     */
+    private $skipGet = false;
+
+    /**
      * Reads parameters
      *
      * @param Url $url
      * @param Route $route
+     * @param bool $skipGet
      */
-    public function __construct(\Ginger\Request\Url $url, Route $route)
+    public function __construct(\Ginger\Request\Url $url, Route $route, $skipGet = false)
     {
+        $this->skipGet = $skipGet;
         $this->getParams($url->path, $route->route);
     }
 
@@ -97,7 +105,9 @@ class Parameters
             }
         }
 
-        $this->filterParameters = array_merge($_GET, $this->filterParameters);
+        if (!$this->skipGet) {
+            $this->filterParameters = array_merge($_GET, $this->filterParameters);
+        }
     }
 
     /**
@@ -212,10 +222,12 @@ class Parameters
                     }
                 }
             }
-        } else if (substr($ct, 0, strlen($jsonCheck)) === $jsonCheck) {
-            $postVars = json_decode($input, true);
         } else {
-            parse_str($input, $postVars);
+            if (substr($ct, 0, strlen($jsonCheck)) === $jsonCheck) {
+                $postVars = json_decode($input, true);
+            } else {
+                parse_str($input, $postVars);
+            }
         }
 
         if (count($_POST) > 0 && count($postVars) === 0) {
@@ -247,14 +259,16 @@ class Parameters
     /**
      * @param $data
      */
-    public function setDataParams($data) {
+    public function setDataParams($data)
+    {
         $this->dataParameters = $data;
     }
 
     /**
      * @param $data
      */
-    public function setRawData($data) {
+    public function setRawData($data)
+    {
         $this->rawData = $data;
     }
 
@@ -329,8 +343,10 @@ class Parameters
 
         if (\Ginger\System\Parameters::$locale !== null) {
             $lang = \Ginger\System\Parameters::$locale;
-        } else if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
-            $lang = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
+        } else {
+            if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+                $lang = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
+            }
         }
 
         \Ginger\Options::getInstance()->locale = new \Ginger\Locale($lang);
@@ -350,7 +366,8 @@ class Parameters
      * @param array $params
      * @return void
      */
-    public function setFilterParameters($params) {
+    public function setFilterParameters($params)
+    {
         $this->filterParameters = $params;
     }
 

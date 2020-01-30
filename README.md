@@ -1,3 +1,5 @@
+# This project is abandoned and archived.
+
 ginger-rest
 ===========
 
